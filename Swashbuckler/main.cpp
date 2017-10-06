@@ -6,7 +6,7 @@ using namespace std;
 
 int main() {
 
-	cout << "Yarr world!" << endl;
+	cout << "Yarr world!" << endl << "Welcome to Swashbuckler!";
 	_getch();
 	return 0;
 }
