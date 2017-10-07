@@ -9,7 +9,8 @@ using namespace std;
 enum  type
 {
 	item,
-	character
+	character,
+	room
 };
 
 class Entity {
@@ -22,8 +23,7 @@ public:
 	string description;
 	type entityType;
 	
-
-	Entity(const char* entityN, const char* entityD, type entityT);
+	Entity(const char* entityN, const char* entityD);
 	~Entity();
 };
 
