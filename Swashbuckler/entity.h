@@ -9,7 +9,7 @@ using namespace std;
 enum  type
 {
 	item,
-	character,
+	creature,
 	room
 };
 
