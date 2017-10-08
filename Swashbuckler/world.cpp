@@ -12,13 +12,15 @@ World::World()
 	Room* sleeping_quarters = new Room("Sleeping quarters", "It's kinda dark, and everyone is sleeping. I should not wake anyone...");
 	Room* main_deck = new Room("Main deck", "Blablabla maindeck");
 
-	Exit* exit1 = new Exit(main_deck, up);
-	Exit* exit2 = new Exit(sleeping_quarters, down);
+	//Exit* exit1 = new Exit("exit1", "sleepTOmain", up);
+	//Exit* exit2 = new Exit("exit2", "mainTOsleep", down);
 
 	mainguy = new Player("Slinger", "A young, untrained but clever pirate", sleeping_quarters);
 
 	worldEntities.push_back(sleeping_quarters);
 	worldEntities.push_back(main_deck);
+	//worldEntities.push_back(exit1);
+	//worldEntities.push_back(exit2);
 	worldEntities.push_back(mainguy);
 }
 
