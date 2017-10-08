@@ -3,11 +3,8 @@
 
 using namespace std;
 
-Exit::Exit(const char* exitName, const char* exitDescription, Room* dest, directions direc) : Entity(exitName, exitDescription)
+Exit::Exit(Room* dest, directions direc)
 {
-	name = exitName;
-	description = exitDescription;
-	entityType = exitdir;
 	destination = dest;
 	direction = direc;
 }
