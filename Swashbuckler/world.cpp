@@ -12,6 +12,11 @@ World::World()
 	Room main_deck("Main deck", "Blablabla maindeck");
 
 	Player mainguy("Slinger", "A young, untrained but clever pirate");
+	mainguy.location = &sleeping_quarters;
+
+	worldEntities.push_back(&sleeping_quarters);
+	worldEntities.push_back(&main_deck);
+	worldEntities.push_back(&mainguy);
 }
 
 World::~World() {}
