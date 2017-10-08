@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include "entity.h"
+#include "player.h"
 
 class World {
 
@@ -12,6 +13,7 @@ private:
 public:
 
 	vector<Entity*> worldEntities;
+	Player* mainguy;
 
 	World();
 	~World();

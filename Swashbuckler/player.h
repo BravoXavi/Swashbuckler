@@ -10,6 +10,8 @@ private:
 public:
 	Player(const char* name, const char* description);
 	~Player();
+
+	void Look();
 };
 
 #endif // !CLASS_PLAYER

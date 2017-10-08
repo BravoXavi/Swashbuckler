@@ -8,15 +8,15 @@ using namespace std;
 
 World::World() 
 {
-	Room sleeping_quarters("Sleeping quarters","It's kinda dark, and everyone is sleeping. I should not wake anyone...");
-	Room main_deck("Main deck", "Blablabla maindeck");
+	Room* sleeping_quarters = new Room("Sleeping quarters", "It's kinda dark, and everyone is sleeping. I should not wake anyone...");
+	Room* main_deck = new Room("Main deck", "Blablabla maindeck");
 
-	Player mainguy("Slinger", "A young, untrained but clever pirate");
-	mainguy.location = &sleeping_quarters;
+	mainguy = new Player("Slinger", "A young, untrained but clever pirate");
+	mainguy->location = sleeping_quarters;
 
-	worldEntities.push_back(&sleeping_quarters);
-	worldEntities.push_back(&main_deck);
-	worldEntities.push_back(&mainguy);
+	worldEntities.push_back(sleeping_quarters);
+	worldEntities.push_back(main_deck);
+	worldEntities.push_back(mainguy);
 }
 
 World::~World() {}
@@ -28,7 +28,7 @@ void World::readInput(vector<string> userInput)
 		case 1:
 			if (userInput[0] == "Look")
 			{
-				cout << "Looking at something" << endl << ">";
+				mainguy->Look();
 			}
 			else if (userInput[0] == "Inventory")
 			{
