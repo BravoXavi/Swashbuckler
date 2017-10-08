@@ -23,7 +23,7 @@ public:
 	Room* destination;
 	directions direction;
 
-	Exit(const char* name, const char* description);
+	Exit(const char* name, const char* description, Room* destination, directions direction);
 	~Exit();
 
 

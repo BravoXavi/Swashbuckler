@@ -3,11 +3,12 @@
 
 using namespace std;
 
-Creature::Creature(const char* creatureName, const char* creatureDescription, Room* location) : Entity(creatureName, creatureDescription)
+Creature::Creature(const char* creatureName, const char* creatureDescription, Room* loc) : Entity(creatureName, creatureDescription)
 {
 	name = creatureName;
 	description = creatureDescription;
 	entityType = creature;
+	location = loc;
 }
 
 Creature::~Creature() {}
