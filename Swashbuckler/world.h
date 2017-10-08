@@ -2,6 +2,7 @@
 #define CLASS_WORLD
 
 #include <vector>
+#include <string>
 #include "entity.h"
 
 class World {
@@ -15,6 +16,7 @@ public:
 	World();
 	~World();
 
+	void readInput(vector<string> userInput);
 };
 
 #endif // !CLASS_WORLD

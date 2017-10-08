@@ -1,6 +1,9 @@
 #include "world.h"
 #include "room.h"
 #include "player.h"
+#include <iostream>
+
+using namespace std;
 
 World::World() 
 {
@@ -11,3 +14,13 @@ World::World()
 }
 
 World::~World() {}
+
+void World::readInput(vector<string> userInput) 
+{
+	cout << "Parsing..." << endl;
+
+	for (vector<string>::iterator it = userInput.begin(); it != userInput.end(); ++it)
+		cout << *it << endl;
+
+	cout << "I didn't understand you, mate" << endl << ">";
+}
