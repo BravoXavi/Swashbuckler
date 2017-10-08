@@ -9,10 +9,12 @@ class Creature : public Entity {
 private:
 
 public:
-	Creature(const char* name, const char* description);
+	Room* location;
+
+	Creature(const char* name, const char* description, Room* location);
 	~Creature();
 
-	Room* location;
+	
 
 };
 

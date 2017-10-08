@@ -11,8 +11,7 @@ World::World()
 	Room* sleeping_quarters = new Room("Sleeping quarters", "It's kinda dark, and everyone is sleeping. I should not wake anyone...");
 	Room* main_deck = new Room("Main deck", "Blablabla maindeck");
 
-	mainguy = new Player("Slinger", "A young, untrained but clever pirate");
-	mainguy->location = sleeping_quarters;
+	mainguy = new Player("Slinger", "A young, untrained but clever pirate", sleeping_quarters);
 
 	worldEntities.push_back(sleeping_quarters);
 	worldEntities.push_back(main_deck);

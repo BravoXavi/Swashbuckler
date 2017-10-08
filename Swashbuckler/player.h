@@ -8,7 +8,7 @@ class Player : public Creature {
 private:
 
 public:
-	Player(const char* name, const char* description);
+	Player(const char* name, const char* description, Room* location);
 	~Player();
 
 	void Look();

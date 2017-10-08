@@ -3,10 +3,10 @@
 
 using namespace std;
 
-Creature::Creature(const char* roomName, const char* roomDescription) : Entity(roomName, roomDescription)
+Creature::Creature(const char* creatureName, const char* creatureDescription, Room* location) : Entity(creatureName, creatureDescription)
 {
-	name = roomName;
-	description = roomDescription;
+	name = creatureName;
+	description = creatureDescription;
 	entityType = creature;
 }
 

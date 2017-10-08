@@ -10,7 +10,8 @@ enum  type
 {
 	item,
 	creature,
-	room
+	room,
+	exitdir
 };
 
 class Entity {

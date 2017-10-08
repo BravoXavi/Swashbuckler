@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Player::Player(const char* playerName, const char* playerDescription) : Creature(playerName, playerDescription)
+Player::Player(const char* playerName, const char* playerDescription, Room* location) : Creature(playerName, playerDescription, location)
 {
 	name = playerName;
 	description = playerDescription;
