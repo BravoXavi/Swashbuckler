@@ -1,14 +1,13 @@
 #include <iostream>
 #include "exit.h"
-#include "room.h"
 
 using namespace std;
 
-Exit::Exit(const char* exitName, const char* exitDescription, Directions direc) : Entity(exitName, exitDescription)
+Exit::Exit(Directions direc, Room* sour, Room* dest)
 {
-	name = exitName;
-	description = exitDescription;
 	direction = direc;
+	source = sour;
+	destination = dest;
 }
 
 Exit::~Exit() {}

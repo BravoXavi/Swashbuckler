@@ -15,6 +15,7 @@ int main() {
 	World theShip;
 
 	cout << "Yarr world!" << endl << "Welcome to Swashbuckler!" << endl << ">";
+	theShip.mainguy->Look();
 
 	while (1) 
 	{		

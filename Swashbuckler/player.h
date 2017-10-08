@@ -12,6 +12,7 @@ public:
 	~Player();
 
 	void Look();
+	bool Go(Directions dir);
 };
 
 #endif // !CLASS_PLAYER

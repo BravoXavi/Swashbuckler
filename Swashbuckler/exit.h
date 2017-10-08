@@ -1,7 +1,6 @@
 #ifndef CLASS_EXIT
 #define CLASS_EXIT
 
-#include "entity.h"
 #include "room.h"
 
 enum Directions
@@ -14,15 +13,19 @@ enum Directions
 	down
 };
 
-class Exit : public Entity{
+class Room;
+
+class Exit {
 
 private:
 
 public:
 
+	Room* source;
+	Room* destination;
 	Directions direction;
 
-	Exit(const char* name, const char* description, Directions direction);
+	Exit(Directions direction, Room* source, Room* destination);
 	~Exit();
 
 
