@@ -2,7 +2,7 @@
 #define CLASS_ROOM
 
 #include "entity.h"
-#include "exit.h"
+#include "exit.h" //esto no tiene porque ser necesario -> Forward Declaration
 #include <vector>
 
 class Exit;
