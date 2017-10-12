@@ -24,27 +24,27 @@ int main() {
 		{
 			inputKey = _getch();
 			
-		}
-		/*	
-		getline(cin, userInput);
-		if (userInput != "") 
-		{
-			istringstream iss(userInput);
-			vector<string> tokens{ istream_iterator<string>{iss},
-				istream_iterator<string>{} };
+			if (inputKey == '\b')
+			{
+				if (userInput.size() > 0) userInput.pop_back();
+				cout << '\b';
+				cout << ' ';
+				cout << '\b';
+			}
+			else if (inputKey == '\r')
+			{
+				istringstream iss(userInput);
+				vector<string> tokens{ istream_iterator<string>{iss},
+					istream_iterator<string>{} };
 
-			theShip.readInput(tokens);	
-		}
-
-		else if (userInput == "Exit") 
-		{
-			break;
-		}
-
-		else
-		{
-			cout << ">";
-		}*/
+				theShip.readInput(tokens);
+			}
+			else
+			{
+				userInput = userInput + inputKey;
+				cout << inputKey;
+			}
+		}		
 	}
 
 	cout << "Thanks for playing Swashbuckler!" << endl << "See ya soon, landlover!" << endl;
