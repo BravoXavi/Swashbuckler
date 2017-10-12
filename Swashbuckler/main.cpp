@@ -13,12 +13,19 @@ int main() {
 
 	string userInput;
 	World theShip;
+	char inputKey;
 
 	cout << "Yarr world!" << endl << "Welcome to Swashbuckler!" << endl << ">";
 	theShip.mainguy->Look();
 
 	while (1) 
-	{		
+	{	
+		if (_kbhit())
+		{
+			inputKey = _getch();
+			
+		}
+		/*	
 		getline(cin, userInput);
 		if (userInput != "") 
 		{
@@ -37,7 +44,7 @@ int main() {
 		else
 		{
 			cout << ">";
-		}
+		}*/
 	}
 
 	cout << "Thanks for playing Swashbuckler!" << endl << "See ya soon, landlover!" << endl;
