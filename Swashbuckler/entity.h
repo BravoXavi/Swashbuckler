@@ -2,6 +2,7 @@
 #define CLASS_ENTITY
 
 #include <string>
+#include <vector>
 #include <list>
 
 enum  type
@@ -19,7 +20,7 @@ public:
 
 	std::string name;
 	std::string description;
-	std::list<Entity*> containedEntities;
+	std::vector<Entity*> containedEntities;
 	type entityType;
 
 private:
