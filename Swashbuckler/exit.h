@@ -17,18 +17,16 @@ class Room;
 
 class Exit {
 
-private:
-
 public:
-
-	Room* source;
-	Room* destination;
-	Directions direction;
-
 	Exit(Directions direction, Room* source, Room* destination);
 	~Exit();
 
+	Room* destination;
+	Directions direction;
 
+private:
+	Room* source;
+	
 };
 
 #endif // !CLASS_EXIT

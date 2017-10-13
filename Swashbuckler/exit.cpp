@@ -1,7 +1,4 @@
-#include <iostream>
 #include "exit.h"
-
-using namespace std;
 
 Exit::Exit(Directions direc, Room* sour, Room* dest)
 {
@@ -10,4 +7,6 @@ Exit::Exit(Directions direc, Room* sour, Room* dest)
 	destination = dest;
 }
 
-Exit::~Exit() {}
+Exit::~Exit() 
+{
+}
