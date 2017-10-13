@@ -1,7 +1,6 @@
 #include <iostream>
 #include "player.h"
-
-using namespace std;
+#include "exit.h"
 
 Player::Player(const char* playerName, const char* playerDescription, Room* loc) : Creature(playerName, playerDescription, loc)
 {
@@ -17,40 +16,68 @@ Player::~Player()
 
 void Player::Look() 
 {
-	cout << "You're in the " << location->name << "." << endl << location->description << "." << endl << ">";
+	std::cout << "You're in the " << location->name << "." << std::endl << location->description << "." << std::endl;
+	
+	if (!location->containedEntities.empty())
+	{
+		std::cout << "I can see something handy in here: ";
+
+		for (std::vector<Entity*>::iterator it = location->containedEntities.begin(); it != location->containedEntities.end(); ++it)
+		{
+			if(it != location->containedEntities.begin())  std::cout << ", ";
+			std::cout << (*it)->name;
+		}
+
+		std::cout << "." << std::endl << ">";
+	}
 }
 
 void Player::Inventory()
 {
-	if(containedEntities.empty()) cout << "You're not carrying anything, shark bait!" << endl << ">";
+	if(containedEntities.empty()) std::cout << "You're not carrying anything, shark bait!" << std::endl << ">";
 	else
 	{
-		cout << "Items: " << endl;
-		for (std::list<Entity*>::iterator it = containedEntities.begin(); it != containedEntities.end(); ++it)
-			std::cout << '- ' << (*it)->name << endl;
+		std::cout << std::endl << "Items: " << std::endl;
+		for (std::vector<Entity*>::iterator it = containedEntities.begin(); it != containedEntities.end(); ++it)
+			std::cout << "- " << (*it)->name << std::endl;
+
+		std::cout << ">";
 	}
+}
+
+void Player::PickUp(const char* itemName)
+{
+	for (std::vector<Entity*>::iterator it = location->containedEntities.begin(); it != location->containedEntities.end(); ++it)
+	{
+		if ((*it)->name == itemName)
+		{	
+			std::cout << "You picked " << itemName << std::endl;
+			containedEntities.push_back((*it));
+		}
+	}
+
+	std::cout << ">";
 }
 
 bool Player::Go(Directions dir)
 {
 	if (location->exits.empty()) 
 	{
-		cout << "There's nothing on that direction..." << endl << ">";
+		std::cout << "There's nothing on that direction..." << std::endl << ">";
 		return false;
 	}
 	else
 	{
-		for (unsigned int i = 0; i < location->exits.size(); i++)
+		for (std::vector<Exit*>::iterator it = location->exits.begin(); it != location->exits.end(); ++it)
 		{
-			if (location->exits[i]->direction == dir) 
+			if ((*it)->direction == dir) 
 			{
-				location = location->exits[i]->destination;
-				cout << "You walked to " << location->name << "." << endl << ">";
+				location = (*it)->destination;
 				return true;
 			}
 		}
 
-		cout << "There's nothing on that direction..." << endl << ">";
+		std::cout << "There's nothing on that direction..." << std::endl << ">";
 		return false;
 	}
 }
