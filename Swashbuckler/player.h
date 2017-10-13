@@ -14,6 +14,7 @@ public:
 	void Inventory();
 	void PickUp(const char* itemName);
 	void Drop(const char* itemName);
+	void CheckItem(const char* itemName);
 	bool Go(Directions dir);
 
 private:

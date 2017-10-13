@@ -67,8 +67,8 @@ void Player::PickUp(const char* itemName)
 		}
 	}
 
-	if (!gotIt) std::cout << "There's nothing like that in here, sorry sea dog!" << std::endl << ">";
-	else std::cout << ">";
+	if (!gotIt) std::cout << "There's nothing like that in here, sorry sea dog!"; 
+	std::cout << std::endl << ">";
 }
 
 void Player::Drop(const char* itemName)
@@ -88,6 +88,21 @@ void Player::Drop(const char* itemName)
 
 	if (!gotIt) std::cout << "You're not carrying that, scoundrel!" << std::endl << ">";
 	else std::cout << ">";
+}
+
+void Player::CheckItem(const char* itemName)
+{
+	bool gotIt = false;
+
+	for (std::vector<Entity*>::iterator it = containedEntities.begin(); it != containedEntities.end(); ++it)
+	{
+		if ((*it)->name == itemName && (*it)->entityType == item) std::cout << (*it)->description << std::endl;
+		gotIt = true;
+	}
+
+	if (!gotIt) std::cout << "You can't check something you don't have, scallywag!";
+	std::cout << std::endl << ">";
+
 }
 
 bool Player::Go(Directions dir)
