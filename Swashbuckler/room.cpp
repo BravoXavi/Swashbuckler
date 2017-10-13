@@ -10,7 +10,7 @@ Room::Room(const char* roomName, const char* roomDescription) : Entity(roomName,
 
 Room::~Room() {}
 
-void Room::checkRoom() 
+const void Room::checkRoom() 
 {
 	std::cout << "You're in " + name + "." << std::endl << description << std::endl;
 }

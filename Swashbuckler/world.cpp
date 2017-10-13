@@ -22,9 +22,10 @@ World::World()
 	mainguy = new Player("Slinger", "A young, untrained but clever pirate", sleeping_quarters);
 
 	Item* sword = new Item("Cutlass", "A slightly old, ugly but effective weapon.", true);
-	Item* orange = new Item("Orange", "The best defense against scurvy!", true);
+	Item* letter = new Item("Letter", "Long description...", true);
 
 	sleeping_quarters->containedEntities.push_back(sword);
+	sleeping_quarters->containedEntities.push_back(letter);
 
 	worldEntities.push_back(sleeping_quarters);
 	worldEntities.push_back(main_deck);
