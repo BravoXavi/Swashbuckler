@@ -89,7 +89,7 @@ void World::readInput(vector<string> userInput)
 			}
 			else if (userInput[0] == "Drop")
 			{
-				cout << "Dropping something" << endl << ">";
+				mainguy->Drop(userInput[1].c_str());
 			}
 			else
 			{
