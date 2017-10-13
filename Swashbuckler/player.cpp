@@ -53,14 +53,40 @@ void Player::PickUp(const char* itemName)
 	{
 		if (location->containedEntities[i]->name == itemName)
 		{
-			std::cout << "You picked " << itemName << std::endl;
-			containedEntities.push_back(location->containedEntities[i]);
-			location->containedEntities.erase(location->containedEntities.begin() + i);
+			if (location->containedEntities[i]->pickableEntity())
+			{
+				std::cout << "You picked " << itemName << std::endl;
+				containedEntities.push_back(location->containedEntities[i]);
+				location->containedEntities.erase(location->containedEntities.begin() + i);				
+			}
+			else
+			{
+				std::cout << "You cannot carry that!" << std::endl;
+			}
 			gotIt = true;
 		}
 	}
 
 	if (!gotIt) std::cout << "There's nothing like that in here, sorry sea dog!" << std::endl << ">";
+	else std::cout << ">";
+}
+
+void Player::Drop(const char* itemName)
+{
+	bool gotIt = false;
+
+	for (int i = 0; i < containedEntities.size(); i++)
+	{
+		if (containedEntities[i]->name == itemName)
+		{
+			std::cout << "You dropped " << itemName << std::endl;
+			location->containedEntities.push_back(containedEntities[i]);
+			containedEntities.erase(containedEntities.begin() + i);
+			gotIt = true;
+		}
+	}
+
+	if (!gotIt) std::cout << "You're not carrying that, scoundrel!" << std::endl << ">";
 	else std::cout << ">";
 }
 
