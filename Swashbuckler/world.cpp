@@ -25,7 +25,9 @@ World::World()
 	worldEntities.push_back(mainguy);
 }
 
-World::~World() {}
+World::~World() 
+{
+}
 
 void World::readInput(vector<string> userInput) 
 {

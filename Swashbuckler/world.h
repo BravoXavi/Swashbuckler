@@ -8,17 +8,17 @@
 
 class World {
 
-private:
-
 public:
-
-	vector<Entity*> worldEntities;
-	Player* mainguy;
-
 	World();
 	~World();
 
-	void readInput(vector<string> userInput);
+	void readInput(std::vector<std::string> userInput);
+
+	std::vector<Entity*> worldEntities;
+	Player* mainguy;
+
+private:
+
 };
 
 #endif // !CLASS_WORLD
