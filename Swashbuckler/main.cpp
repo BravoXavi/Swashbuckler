@@ -51,7 +51,7 @@ int main() {
 		}		
 	}
 
-	cout << "Thanks for playing Swashbuckler!" << endl << "See ya soon, landlover!" << endl;
+	cout << "Thanks for playing Swashbuckler!" << endl << "See ya soon, landlubber!" << endl;
 	_getch();
 
 	return 0;
