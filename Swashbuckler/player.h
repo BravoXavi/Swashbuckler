@@ -11,6 +11,7 @@ public:
 	~Player();
 
 	void Look();
+	void Inventory();
 	bool Go(Directions dir);
 
 private:

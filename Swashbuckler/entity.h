@@ -19,10 +19,11 @@ public:
 
 	std::string name;
 	std::string description;
+	std::list<Entity*> containedEntities;
 	type entityType;
 
 private:
-	std::list<Entity*> containedEntities;
+	
 
 };
 
