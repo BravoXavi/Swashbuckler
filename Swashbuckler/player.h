@@ -2,6 +2,7 @@
 #define CLASS_PLAYER
 
 #include "creature.h"
+#include "exit.h"
 
 class Player : public Creature {
 
