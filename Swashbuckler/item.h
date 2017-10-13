@@ -9,6 +9,8 @@ public:
 	Item(const char* name, const char* description, bool isPickable);
 	~Item();
 
+	virtual bool pickableEntity();
+
 	bool pickable;
 
 private:

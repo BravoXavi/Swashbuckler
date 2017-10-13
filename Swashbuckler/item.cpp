@@ -11,3 +11,7 @@ Item::Item(const char* itemName, const char* itemDescription, bool isPickable) :
 Item::~Item()
 {
 }
+
+bool Item::pickableEntity(){
+	return pickable;
+}
