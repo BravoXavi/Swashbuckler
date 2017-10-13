@@ -4,6 +4,7 @@ Item::Item(const char* itemName, const char* itemDescription, bool isPickable) :
 {
 	name = itemName;
 	description = itemDescription;
+	entityType = item;
 	pickable = isPickable;
 }
 
