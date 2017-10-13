@@ -91,6 +91,10 @@ void World::readInput(vector<string> userInput)
 			{
 				mainguy->Drop(userInput[1].c_str());
 			}
+			else if (userInput[0] == "Check")
+			{
+				mainguy->CheckItem(userInput[1].c_str());
+			}
 			else
 			{
 				cout << "I didn't understand you, mate" << endl << ">";
