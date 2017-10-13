@@ -4,8 +4,6 @@
 #include <string>
 #include <list>
 
-using namespace std;
-
 enum  type
 {
 	item,
@@ -15,16 +13,17 @@ enum  type
 
 class Entity {
 
-private:
-	list<Entity*> containedEntities;
-
 public:
-	string name;
-	string description;
-	type entityType;
-	
 	Entity(const char* entityN, const char* entityD);
 	~Entity();
+
+	std::string name;
+	std::string description;
+	type entityType;
+
+private:
+	std::list<Entity*> containedEntities;
+
 };
 
 #endif // !CLASS_ENTITY
