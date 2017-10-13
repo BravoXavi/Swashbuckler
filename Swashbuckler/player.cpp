@@ -12,6 +12,10 @@ Player::Player(const char* playerName, const char* playerDescription, Room* loc)
 
 Player::~Player() 
 {
+	for (std::vector<Entity*>::iterator it = containedEntities.begin(); it != containedEntities.end(); ++it)
+		delete *it;
+
+	containedEntities.clear();
 }
 
 void Player::Look() 

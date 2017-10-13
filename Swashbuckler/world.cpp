@@ -62,6 +62,10 @@ World::World()
 
 World::~World() 
 {
+	for (vector<Entity*>::iterator it = worldEntities.begin(); it != worldEntities.end(); ++it)
+		delete *it;
+
+	worldEntities.clear();
 }
 
 void World::readInput(vector<string> userInput) 

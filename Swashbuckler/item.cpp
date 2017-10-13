@@ -10,6 +10,10 @@ Item::Item(const char* itemName, const char* itemDescription, bool isPickable) :
 
 Item::~Item()
 {
+	for (std::vector<Entity*>::iterator it = containedEntities.begin(); it != containedEntities.end(); ++it)
+		delete *it;
+
+	containedEntities.clear();
 }
 
 bool Item::pickableEntity(){

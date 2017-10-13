@@ -8,7 +8,13 @@ Room::Room(const char* roomName, const char* roomDescription) : Entity(roomName,
 	entityType = room;
 }
 
-Room::~Room() {}
+Room::~Room() 
+{
+	for (std::vector<Exit*>::iterator it = exits.begin(); it != exits.end(); ++it)
+		delete *it;
+
+	exits.clear();
+}
 
 const void Room::checkRoom() 
 {
