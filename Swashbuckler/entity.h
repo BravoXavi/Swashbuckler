@@ -23,6 +23,11 @@ public:
 	std::vector<Entity*> containedEntities;
 	type entityType;
 
+	virtual bool pickableEntity()
+	{
+		return false;
+	}
+
 private:
 	
 
