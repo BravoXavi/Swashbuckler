@@ -5,14 +5,15 @@
 
 class Player : public Creature {
 
-private:
-
 public:
 	Player(const char* name, const char* description, Room* location);
 	~Player();
 
 	void Look();
 	bool Go(Directions dir);
+
+private:
+
 };
 
 #endif // !CLASS_PLAYER

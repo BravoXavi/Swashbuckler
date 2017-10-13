@@ -11,9 +11,12 @@ Player::Player(const char* playerName, const char* playerDescription, Room* loc)
 	location = loc;
 }
 
-Player::~Player() {}
+Player::~Player() 
+{
+}
 
-void Player::Look() {
+void Player::Look() 
+{
 	cout << "You're in the " << location->name << "." << endl << location->description << "." << endl << ">";
 }
 
@@ -26,7 +29,7 @@ bool Player::Go(Directions dir)
 	}
 	else
 	{
-		for (int i = 0; i < location->exits.size(); i++)
+		for (unsigned int i = 0; i < location->exits.size(); i++)
 		{
 			if (location->exits[i]->direction == dir) 
 			{
