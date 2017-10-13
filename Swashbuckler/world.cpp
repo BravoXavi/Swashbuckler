@@ -2,6 +2,7 @@
 #include "room.h"
 #include "player.h"
 #include "exit.h"
+#include "item.h"
 #include <iostream>
 #include <algorithm>
 
@@ -19,6 +20,11 @@ World::World()
 	main_deck->exits.push_back(exit2);
 
 	mainguy = new Player("Slinger", "A young, untrained but clever pirate", sleeping_quarters);
+
+	Item* sword = new Item("Cutlass", "A slightly old, ugly but effective weapon.", true);
+	Item* orange = new Item("Orange", "The best defense against scurvy!", true);
+
+	sleeping_quarters->containedEntities.push_back(sword);
 
 	worldEntities.push_back(sleeping_quarters);
 	worldEntities.push_back(main_deck);
@@ -40,7 +46,7 @@ void World::readInput(vector<string> userInput)
 			}
 			else if (userInput[0] == "Inventory")
 			{
-				cout << "Checking inventory" << endl << ">";
+				mainguy->Inventory();
 			}
 			else
 			{
@@ -79,7 +85,7 @@ void World::readInput(vector<string> userInput)
 			}
 			else if (userInput[0] == "Pick")
 			{
-				cout << "Picking something" << endl << ">";
+				mainguy->PickUp(userInput[1].c_str());
 			}
 			else if (userInput[0] == "Drop")
 			{
