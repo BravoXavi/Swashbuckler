@@ -47,16 +47,21 @@ void Player::Inventory()
 
 void Player::PickUp(const char* itemName)
 {
-	for (std::vector<Entity*>::iterator it = location->containedEntities.begin(); it != location->containedEntities.end(); ++it)
+	bool gotIt = false;
+
+	for(int i = 0; i < location->containedEntities.size(); i++)
 	{
-		if ((*it)->name == itemName)
-		{	
+		if (location->containedEntities[i]->name == itemName)
+		{
 			std::cout << "You picked " << itemName << std::endl;
-			containedEntities.push_back((*it));
+			containedEntities.push_back(location->containedEntities[i]);
+			location->containedEntities.erase(location->containedEntities.begin() + i);
+			gotIt = true;
 		}
 	}
 
-	std::cout << ">";
+	if (!gotIt) std::cout << "There's nothing like that in here, sorry sea dog!" << std::endl << ">";
+	else std::cout << ">";
 }
 
 bool Player::Go(Directions dir)
