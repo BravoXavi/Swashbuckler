@@ -6,15 +6,13 @@
 
 class Creature : public Entity {
 
-private:
-
-public:
-	Room* location;
-
+public:	
 	Creature(const char* name, const char* description, Room* location);
 	~Creature();
 
-	
+	Room* location;
+
+private:
 
 };
 

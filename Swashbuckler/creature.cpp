@@ -11,4 +11,6 @@ Creature::Creature(const char* creatureName, const char* creatureDescription, Ro
 	location = loc;
 }
 
-Creature::~Creature() {}
+Creature::~Creature() 
+{
+}
