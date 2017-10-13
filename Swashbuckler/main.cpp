@@ -15,8 +15,10 @@ int main() {
 	World theShip;
 	char inputKey;
 
-	cout << "Yarr world!" << endl << "Welcome to Swashbuckler!" << endl << ">";
-	theShip.mainguy->Look();
+	cout << "Yarr world!" << endl << "Welcome to Swashbuckler!" << endl;
+	cout << "Story story story..." << endl;
+	cout << "Story story story..." << endl;
+	cout << "Story story story..." << endl << ">";
 
 	while (1) 
 	{	
@@ -36,8 +38,10 @@ int main() {
 				istringstream iss(userInput);
 				vector<string> tokens{ istream_iterator<string>{iss},
 					istream_iterator<string>{} };
-
+				
+				std::cout << endl;
 				theShip.readInput(tokens);
+				userInput.clear();
 			}
 			else
 			{
