@@ -12,6 +12,7 @@ public:
 
 	void Look();
 	void Inventory();
+	void PickUp(const char* itemName);
 	bool Go(Directions dir);
 
 private:
