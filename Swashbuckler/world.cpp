@@ -52,7 +52,8 @@ World::World()
 	Item* letter = new Item("Letter", "Long description...", true);
 	sleeping_quarters->containedEntities.push_back(letter);
 	
-	
+	Item* helm = new Item("Helm", "Long description...", false);
+	sleeping_quarters->containedEntities.push_back(helm);
 
 	//Storage of all entities in World class container
 	worldEntities.push_back(sleeping_quarters);

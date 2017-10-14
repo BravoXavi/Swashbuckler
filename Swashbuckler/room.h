@@ -2,6 +2,7 @@
 #define CLASS_ROOM
 
 #include "entity.h"
+#include "exit.h"
 #include <vector>
 
 class Exit;

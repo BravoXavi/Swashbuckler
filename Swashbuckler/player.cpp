@@ -53,7 +53,7 @@ void Player::PickUp(const char* itemName)
 {
 	bool gotIt = false;
 
-	for(int i = 0; i < location->containedEntities.size(); i++)
+	for(unsigned int i = 0; i < location->containedEntities.size(); i++)
 	{
 		if (location->containedEntities[i]->name == itemName)
 		{
@@ -79,7 +79,7 @@ void Player::Drop(const char* itemName)
 {
 	bool gotIt = false;
 
-	for (int i = 0; i < containedEntities.size(); i++)
+	for (unsigned int i = 0; i < containedEntities.size(); i++)
 	{
 		if (containedEntities[i]->name == itemName)
 		{
