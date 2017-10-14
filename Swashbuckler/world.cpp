@@ -140,7 +140,11 @@ void World::readInput(vector<string> userInput)
 			break;
 
 		case 4:
-			if (userInput[0] == "Put")
+			if (userInput[0] == "Use")
+			{
+				mainguy->Use(userInput[1].c_str(), userInput[3].c_str());
+			}
+			else if (userInput[0] == "Put")
 			{
 				cout << "Putting something in/on something" << endl << ">";
 			}
