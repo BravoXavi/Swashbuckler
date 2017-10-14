@@ -16,10 +16,15 @@ public:
 	void Drop(const char* itemName);
 	void CheckItem(const char* itemName);
 	void Use(const char* itemUsed, const char* itemUsedOn);
-
 	bool Go(Directions dir);
 
 	int convertItemToInt(const char* itemName);
+
+public:
+	//Win conditions
+	bool sailsDamaged = false;
+	bool helmDamaged = false;
+	bool fullBag = false;
 
 private:
 
