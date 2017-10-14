@@ -127,7 +127,28 @@ void Player::CheckItem(const char* itemName)
 
 void Player::Use(const char* itemUsed, const char* itemUsedOn)
 {
+	int itemCode = 0;
+	itemCode = convertItemToInt(itemUsed);
 
+	switch (itemCode)
+	{
+	case 735:
+		std::cout << "You have the cutlass" << std::endl;
+		break;
+	}
+
+}
+
+int Player::convertItemToInt(const char* itemName)
+{
+	int output = 0;
+	std::string toConvert = itemName;
+	for (unsigned int i = 0; i < toConvert.length(); i++)
+	{
+		output += (int)toConvert[i];
+	}
+
+	return output;
 }
 
 bool Player::Go(Directions dir)
