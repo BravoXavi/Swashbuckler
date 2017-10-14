@@ -52,8 +52,11 @@ World::World()
 	Item* letter = new Item("Letter", "Long description...", true);
 	sleeping_quarters->containedEntities.push_back(letter);
 	
-	Item* helm = new Item("Helm", "Long description...", false);
-	sleeping_quarters->containedEntities.push_back(helm);
+	Item* sails = new Item("Sails", "The sails of the ship. The ropes that hold them together are tied to the sides of the ship.", false);
+	main_deck->containedEntities.push_back(sails);
+
+	Item* helm = new Item("Helm", "The device taking care of controling the direction of the ship. Would be a shame if someone messes with it...", false);
+	poopdeck->containedEntities.push_back(helm);
 
 	//Storage of all entities in World class container
 	worldEntities.push_back(sleeping_quarters);

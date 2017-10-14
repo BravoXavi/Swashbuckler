@@ -100,11 +100,27 @@ void Player::CheckItem(const char* itemName)
 
 	for (std::vector<Entity*>::iterator it = containedEntities.begin(); it != containedEntities.end(); ++it)
 	{
-		if ((*it)->name == itemName && (*it)->entityType == item) std::cout << (*it)->description << std::endl;
-		gotIt = true;
+		if ((*it)->name == itemName && (*it)->entityType == item)
+		{
+			std::cout << (*it)->description << std::endl;
+			gotIt = true;
+		}
 	}
 
-	if (!gotIt) std::cout << "You can't check something you don't have, scallywag!";
+	if(!gotIt)
+	{
+		for (std::vector<Entity*>::iterator it = location->containedEntities.begin(); it != location->containedEntities.end(); ++it)
+		{
+			if ((*it)->name == itemName && (*it)->entityType == item)
+			{
+				std::cout << (*it)->description << std::endl;
+				gotIt = true;
+			}			
+		}
+	}
+
+	if (!gotIt) std::cout << "You don't have or see something like that, scallywag!";
+
 	std::cout << std::endl << ">";
 
 }
