@@ -28,6 +28,21 @@ public:
 		return false;
 	}
 
+	virtual bool containsEntity(const char* entityName)
+	{
+		bool ret = false;
+
+		for (std::vector<Entity*>::iterator it = containedEntities.begin(); it != containedEntities.end(); ++it)
+		{
+			if ((*it)->name == entityName)
+			{
+				ret = true;
+			}
+		}
+
+		return ret;
+	}
+
 private:
 	
 
