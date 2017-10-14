@@ -133,7 +133,13 @@ void Player::Use(const char* itemUsed, const char* itemUsedOn)
 	switch (itemCode)
 	{
 	case 735:
-		std::cout << "You have the cutlass" << std::endl;
+		if (containsEntity(itemUsed))
+		{
+			else if ( (strcmp(itemUsedOn, "Sails") == 0) && location->containsEntity(itemUsedOn))
+			{
+				std::cout << "You can use Cutlass on Sails" << std::endl;
+			}			
+		}		
 		break;
 	}
 
