@@ -15,6 +15,7 @@ public:
 	void PickUp(const char* itemName);
 	void Drop(const char* itemName);
 	void CheckItem(const char* itemName);
+	void Use(const char* itemUsed, const char* itemUsedOn);
 	bool Go(Directions dir);
 
 private:

@@ -125,6 +125,11 @@ void Player::CheckItem(const char* itemName)
 
 }
 
+void Player::Use(const char* itemUsed, const char* itemUsedOn)
+{
+
+}
+
 bool Player::Go(Directions dir)
 {
 	if (location->exits.empty()) 
