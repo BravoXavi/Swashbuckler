@@ -52,7 +52,7 @@ World::World()
 	Item* letter = new Item("Letter", "Long description...", true);
 	sleeping_quarters->containedEntities.push_back(letter);
 	
-	Item* sails = new Item("Sails", "The sails of the ship. The ropes that hold them together are tied to the sides of the ship.", false);
+	Item* sails = new Item("Sails", "The sails of the ship. You can see the ropes that hold them together on the sides.", false);
 	main_deck->containedEntities.push_back(sails);
 
 	Item* helm = new Item("Helm", "The device taking care of controling the direction of the ship. Would be a shame if someone messes with it...", false);

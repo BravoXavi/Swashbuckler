@@ -135,11 +135,24 @@ void Player::Use(const char* itemUsed, const char* itemUsedOn)
 	case 735:
 		if (containsEntity(itemUsed))
 		{
-			else if ( (strcmp(itemUsedOn, "Sails") == 0) && location->containsEntity(itemUsedOn))
+			if ((strcmp(itemUsedOn, "Sails") == 0) && location->containsEntity(itemUsedOn))
 			{
-				std::cout << "You can use Cutlass on Sails" << std::endl;
-			}			
-		}		
+				if (!sailsDamaged) 
+				{
+					sailsDamaged = true;
+					std::cout << "You use the Cutlass to damage the ropes that hold the Sails together. They will have a bad time repairing this..." << std::endl;
+				}
+				else
+				{
+					std::cout << "You already did the job. Lower that Cutlass, butcher!" << std::endl;
+				}
+			}
+			else
+			{
+				std::cout << "That's not a good idea..." << std::endl;
+			}						
+		}	
+
 		break;
 	}
 
