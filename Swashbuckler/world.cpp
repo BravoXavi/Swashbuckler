@@ -45,18 +45,40 @@ World::World()
 	//Player creation
 	mainguy = new Player("Slinger", "A young, untrained but clever pirate", sleeping_quarters);
 
-	//Item creation and storage
+	//Item creation and storage - Pickable
 	Item* sword = new Item("Cutlass", "A slightly old, ugly but effective weapon.", true);
 	sleeping_quarters->containedEntities.push_back(sword);
 
 	Item* letter = new Item("Letter", "Long description...", true);
 	sleeping_quarters->containedEntities.push_back(letter);
 	
+	Item* hammer = new Item("Hammer", "A small hammer. Nothing special.", true);
+	poopdeck->containedEntities.push_back(hammer);
+
+	Item* nails = new Item("Nails", "Wood nails. As simple as that.", true);
+	storage_room->containedEntities.push_back(nails);
+
+	Item* oranges = new Item("Oranges", "The favorite defense of all pirates against scurvy! Pretty tasty, too.", true);
+	storage_room->containedEntities.push_back(oranges);
+
+	Item* bag = new Item("Bag", "A small bag. Can be used to carry something.", true);
+	poopdeck->containedEntities.push_back(bag);
+
+	Item* woodplank = new Item("Wood plank", "A pretty solid plank. Could be used to close a door or cover something damaged.", true);
+	storage_room->containedEntities.push_back(woodplank);
+
+	Item* spyglass = new Item("Spyglass", "An old spyglass stolen from the lookout.", true);
+	crows_nest->containedEntities.push_back(spyglass);
+
+	//Item creation and storage - UnPickable
 	Item* sails = new Item("Sails", "The sails of the ship. You can see the ropes that hold them together on the sides.", false);
 	main_deck->containedEntities.push_back(sails);
 
 	Item* helm = new Item("Helm", "The device taking care of controling the direction of the ship. Would be a shame if someone messes with it...", false);
 	poopdeck->containedEntities.push_back(helm);
+
+	Item* boat = new Item("Boat", "You can sail away with this lil' boat, but it looks damaged. With some quick repairs it could work.", false);
+	main_deck->containedEntities.push_back(boat);
 
 	//Storage of all entities in World class container
 	worldEntities.push_back(sleeping_quarters);
