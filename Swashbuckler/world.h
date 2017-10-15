@@ -13,6 +13,7 @@ public:
 	~World();
 
 	void readInput(std::vector<std::string> userInput);
+	void ending();
 
 	std::vector<Entity*> worldEntities;
 	Player* mainguy;

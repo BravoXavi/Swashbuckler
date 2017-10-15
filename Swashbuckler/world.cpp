@@ -179,6 +179,31 @@ void World::readInput(vector<string> userInput)
 			}
 
 			break;
+	}	
+}
 
+void World::ending()
+{
+	if (mainguy->helmDamaged && mainguy->sailsDamaged)
+	{
+		std::cout << "You take the boat in the silence of the night and sail away!" << std::endl;
+		std::cout << "Thankfully, you where smart enough to make sure that the ship was damaged enough." << std::endl;
+		std::cout << "When the Captain woke up and saw the lookout missing, the ship damaged and the letter not in his pocket, he panicked and tried to escape the ship." << std::endl;
+		std::cout << "Let's hope the rest of the crew noticed it and did something, because he's the only one that knows for sure who destroyed his plans..." << std::endl;
+	}
+	else
+	{
+		std::cout << "You take the boat in the silence of the night and sail away!" << std::endl;
+		std::cout << "But you did not think about something. The ship sailed to port without any problem, where all your crew was captured by the Navy." << std::endl;
+		std::cout << "Only your old Captain survided and is now a very influential man. Let's hope he do not uses that power to look for you..." << std::endl;
+	}
+	if (mainguy->Find("Spyglass"))
+	{
+		std::cout << "Because you took the Spyglass with you, you could see an island and sail there, where you finally escaped. Good job!! Davy Jones smiles at you, lad!" << std::endl;
+	}
+	else
+	{
+		std::cout << "Sadly, you did not take a Spyglass with you. Getting in a boat in the middle of the sea is a real problem when you don't know where to go." << std::endl;
+		std::cout << "Look at the bright side! Now you're the captain of your own ship! At least while you have something to eat..." << std::endl;
 	}
 }
