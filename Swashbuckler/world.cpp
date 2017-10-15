@@ -61,6 +61,9 @@ World::World()
 	Item* oranges = new Item("Oranges", "The favorite defense of all pirates against scurvy! Pretty tasty, too.", FOOD);
 	storage_room->containedEntities.push_back(oranges);
 
+	Item* bottle = new Item("Water", "A small bottle with water. This could be perfect for the trip.", FOOD);
+	crows_nest->containedEntities.push_back(bottle);
+
 	Item* bag = new Item("Bag", "A small bag. Can be used to carry something.", CONTAINER);
 	poopdeck->containedEntities.push_back(bag);
 
@@ -168,7 +171,7 @@ void World::readInput(vector<string> userInput)
 			}
 			else if (userInput[0] == "Put")
 			{
-				cout << "Putting something in/on something" << endl << ">";
+				mainguy->Put(userInput[1].c_str(), userInput[3].c_str());
 			}
 			else
 			{
