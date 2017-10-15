@@ -44,7 +44,14 @@ void Player::Inventory()
 	{
 		std::cout << std::endl << "Items: " << std::endl;
 		for (std::list<Entity*>::iterator it = containedEntities.begin(); it != containedEntities.end(); ++it)
-			std::cout << "- " << (*it)->name << std::endl;
+		{
+			std::cout << "- " << (*it)->name;
+			if ((*it)->containedEntities.size() == 2)
+			{
+				std::cout << " (Full)";
+			}
+			std::cout << std::endl;
+		}
 
 		std::cout << ">";
 	}
@@ -114,7 +121,7 @@ void Player::CheckItem(const char* itemName)
 bool Player::Put(const char* inserted, const char* container)
 {
 	Item* insertedItem = (Item*)Find(inserted, item);
-	Item* containerItem = (Item*)location->Find(container, item);
+	Item* containerItem = (Item*)Find(container, item);
 
 	if (insertedItem == nullptr || containerItem == nullptr)
 	{
@@ -130,7 +137,8 @@ bool Player::Put(const char* inserted, const char* container)
 	{
 		std::cout << "You put the " << insertedItem->name << " inside the " << containerItem->name;
 		containerItem->containedEntities.push_back(insertedItem);
-		containedEntities.remove(insertedItem);		
+		containedEntities.remove(insertedItem);	
+		if (containerItem->containedEntities.size() == 2) fullBag = true;
 	}
 
 	std::cout << std::endl << ">";
