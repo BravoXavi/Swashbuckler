@@ -15,6 +15,7 @@ public:
 	void PickUp(const char* itemName);
 	void Drop(const char* itemName);
 	void CheckItem(const char* itemName);
+
 	bool Use(const char* itemUsed, const char* itemUsedOn);
 	bool Put(const char* inserted, const char* container);
 	bool Go(Directions dir);
@@ -26,6 +27,7 @@ public:
 	bool sailsDamaged = false;
 	bool helmDamaged = false;
 	bool fullBag = false;
+	bool escaped = false;
 
 private:
 

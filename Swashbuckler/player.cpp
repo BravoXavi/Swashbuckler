@@ -214,9 +214,20 @@ bool Player::Use(const char* itemUsed, const char* itemUsedOn)
 			{
 				if (Find("Nails") && Find("Plank"))
 				{
-					if(!fullBag) std::cout << "If you repair the ship and go without any food, it'll be a suicide.";
-					else if(!helmDamaged || !sailsDamaged) std::cout << "END but not good";
-					else std::cout << "GOOD ENDING";					
+					std::cout << "Do you wants to repair the boat and sail away? (Y/N)" << std::endl;
+					char response;
+					std::cin >> response;
+					switch (response)
+					{
+						case 'Y':
+							escaped = true;
+							break;
+						case 'N':
+							break;
+						default: 
+							std::cout << "That's not an answer, lad.";
+							break;
+					}										
 				}
 			}
 			else
@@ -230,7 +241,7 @@ bool Player::Use(const char* itemUsed, const char* itemUsedOn)
 		}
 		std::cout << std::endl;
 		std::cout << "---------------------------------------------" << std::endl;
-		std::cout << ">";
+		if(!escaped) std::cout << ">";
 		return true;
 	}
 
