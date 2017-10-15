@@ -33,16 +33,18 @@ void Player::Look()
 			std::cout << (*it)->name;
 		}
 
-		std::cout << "." << std::endl << ">";
+		std::cout << "." << std::endl;
+		std::cout << "---------------------------------------------" << std::endl;
+		std::cout << ">";
 	}
 }
 
 void Player::Inventory()
 {
-	if(containedEntities.empty()) std::cout << "You're not carrying anything, shark bait!" << std::endl << ">";
+	if(containedEntities.empty()) std::cout << "You're not carrying anything, shark bait!";
 	else
 	{
-		std::cout << std::endl << "Items: " << std::endl;
+		std::cout << "Items: " << std::endl;
 		for (std::list<Entity*>::iterator it = containedEntities.begin(); it != containedEntities.end(); ++it)
 		{
 			std::cout << "- " << (*it)->name;
@@ -51,10 +53,11 @@ void Player::Inventory()
 				std::cout << " (Full)";
 			}
 			std::cout << std::endl;
-		}
-
-		std::cout << ">";
+		}		
 	}
+
+	std::cout << "---------------------------------------------" << std::endl;
+	std::cout << ">";
 }
 
 void Player::PickUp(const char* itemName)
@@ -79,7 +82,9 @@ void Player::PickUp(const char* itemName)
 		}
 	}
 
-	std::cout << std::endl << ">";	
+	std::cout << std::endl;
+	std::cout << "---------------------------------------------" << std::endl;
+	std::cout << ">";
 }
 
 void Player::Drop(const char* itemName)
@@ -97,7 +102,9 @@ void Player::Drop(const char* itemName)
 		containedEntities.remove(itemToDrop);
 	}
 
-	std::cout << std::endl << ">";
+	std::cout << std::endl;
+	std::cout << "---------------------------------------------" << std::endl;
+	std::cout << ">";
 }
 
 void Player::CheckItem(const char* itemName)
@@ -115,7 +122,9 @@ void Player::CheckItem(const char* itemName)
 		std::cout << itemToCheck->description;
 	}
 
-	std::cout << std::endl << ">";
+	std::cout << std::endl;
+	std::cout << "---------------------------------------------" << std::endl;
+	std::cout << ">";
 }
 
 bool Player::Put(const char* inserted, const char* container)
@@ -141,7 +150,9 @@ bool Player::Put(const char* inserted, const char* container)
 		if (containerItem->containedEntities.size() == 2) fullBag = true;
 	}
 
-	std::cout << std::endl << ">";
+	std::cout << std::endl;
+	std::cout << "---------------------------------------------" << std::endl;
+	std::cout << ">";
 	return true;
 }
 
@@ -155,12 +166,12 @@ bool Player::Use(const char* itemUsed, const char* itemUsedOn)
 
 	if (usingItem == nullptr || usedOnItem == nullptr)
 	{
-		std::cout << "You're not able of doing that, parrot!" << std::endl;
+		std::cout << "You're not able of doing that, parrot!";
 		return false;
 	}
 	else if (usingItem->itemType != USABLE || usedOnItem->itemType != UNPICKABLE)
 	{
-		std::cout << "You're not able of doing that, parrot!" << std::endl;
+		std::cout << "You're not able of doing that, parrot!";
 		return false;
 	}
 	else 
@@ -182,7 +193,7 @@ bool Player::Use(const char* itemUsed, const char* itemUsedOn)
 			}
 			else
 			{
-				std::cout << "That's not a good idea..." << std::endl;
+				std::cout << "That's not a good idea...";
 			}			
 			break;
 
@@ -192,31 +203,34 @@ bool Player::Use(const char* itemUsed, const char* itemUsedOn)
 				if (!helmDamaged)
 				{
 					helmDamaged = true;
-					std::cout << "You use the back of the hammer to disengage the helm. This will cause at least 30 minutes of repairs. More time to disappear." << std::endl;
+					std::cout << "You use the back of the hammer to disengage the helm. This will cause at least 30 minutes of repairs. More time to disappear.";
 				}
 				else
 				{
-					std::cout << "Trying to make something else could be too loud. Better leave it like that." << std::endl;
+					std::cout << "Trying to make something else could be too loud. Better leave it like that.";
 				}
 			}
 			else if (usedOnItem->name == "Boat")
 			{
 				if (Find("Nails") && Find("Plank"))
 				{
-					if(!fullBag) std::cout << "If you repair the ship and go without any food, it'll be a suicide." << std::endl;
-					else if(!helmDamaged || !sailsDamaged) std::cout << "END but not good" << std::endl;
-					else std::cout << "GOOD ENDING" << std::endl;					
+					if(!fullBag) std::cout << "If you repair the ship and go without any food, it'll be a suicide.";
+					else if(!helmDamaged || !sailsDamaged) std::cout << "END but not good";
+					else std::cout << "GOOD ENDING";					
 				}
 			}
 			else
 			{
-				std::cout << "That's not a good idea..." << std::endl;
+				std::cout << "That's not a good idea...";
 			}			
 			break;
 		default:
-			std::cout << "That's not even a possibility, blowfish!" << std::endl;
+			std::cout << "That's not even a possibility, blowfish!";
 			break;
 		}
+		std::cout << std::endl;
+		std::cout << "---------------------------------------------" << std::endl;
+		std::cout << ">";
 		return true;
 	}
 
@@ -238,7 +252,10 @@ bool Player::Go(Directions dir)
 {
 	if (location->exits.empty()) 
 	{
-		std::cout << "There's nothing on that direction..." << std::endl << ">";
+		std::cout << "There's nothing on that direction...";
+		std::cout << std::endl;
+		std::cout << "---------------------------------------------" << std::endl;
+		std::cout << ">";
 		return false;
 	}
 	else
@@ -252,7 +269,10 @@ bool Player::Go(Directions dir)
 			}
 		}
 
-		std::cout << "There's nothing on that direction..." << std::endl << ">";
+		std::cout << "There's nothing on that direction...";
+		std::cout << std::endl;
+		std::cout << "---------------------------------------------" << std::endl;
+		std::cout << ">";
 		return false;
 	}
 }

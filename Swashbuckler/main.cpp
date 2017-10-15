@@ -44,6 +44,7 @@ int main() {
 					istream_iterator<string>{} };
 				
 				std::cout << endl;
+				cout << "---------------------------------------------" << endl;
 				theShip.readInput(tokens);
 				userInput.clear();
 			}
