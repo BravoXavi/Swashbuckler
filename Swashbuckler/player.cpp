@@ -1,6 +1,7 @@
 #include <iostream>
 #include "player.h"
 #include "exit.h"
+#include "item.h"
 
 Player::Player(const char* playerName, const char* playerDescription, Room* loc) : Creature(playerName, playerDescription, loc)
 {
@@ -12,7 +13,7 @@ Player::Player(const char* playerName, const char* playerDescription, Room* loc)
 
 Player::~Player() 
 {
-	for (std::vector<Entity*>::iterator it = containedEntities.begin(); it != containedEntities.end(); ++it)
+	for (std::list<Entity*>::iterator it = containedEntities.begin(); it != containedEntities.end(); ++it)
 		delete *it;
 
 	containedEntities.clear();
@@ -26,7 +27,7 @@ void Player::Look()
 	{
 		std::cout << "I can see something handy in here: ";
 
-		for (std::vector<Entity*>::iterator it = location->containedEntities.begin(); it != location->containedEntities.end(); ++it)
+		for (std::list<Entity*>::iterator it = location->containedEntities.begin(); it != location->containedEntities.end(); ++it)
 		{
 			if(it != location->containedEntities.begin())  std::cout << ", ";
 			std::cout << (*it)->name;
@@ -42,7 +43,7 @@ void Player::Inventory()
 	else
 	{
 		std::cout << std::endl << "Items: " << std::endl;
-		for (std::vector<Entity*>::iterator it = containedEntities.begin(); it != containedEntities.end(); ++it)
+		for (std::list<Entity*>::iterator it = containedEntities.begin(); it != containedEntities.end(); ++it)
 			std::cout << "- " << (*it)->name << std::endl;
 
 		std::cout << ">";
@@ -51,93 +52,117 @@ void Player::Inventory()
 
 void Player::PickUp(const char* itemName)
 {
-	bool gotIt = false;
+	Item* itemToPick = (Item*)location->Find(itemName, item);
 
-	for(unsigned int i = 0; i < location->containedEntities.size(); i++)
+	if (itemToPick == nullptr)
 	{
-		if (location->containedEntities[i]->name == itemName)
+		std::cout << "There's nothing like that in here, sorry sea dog!";
+	}
+	else 
+	{
+		if (itemToPick->entityType != UNPICKABLE)
 		{
-			if (location->containedEntities[i]->pickableEntity())
-			{
-				std::cout << "You picked " << itemName << std::endl;
-				containedEntities.push_back(location->containedEntities[i]);
-				location->containedEntities.erase(location->containedEntities.begin() + i);				
-			}
-			else
-			{
-				std::cout << "You cannot carry that!" << std::endl;
-			}
-			gotIt = true;
+			std::cout << "You picked " << itemName;
+			containedEntities.push_back(itemToPick);
+			location->containedEntities.remove(itemToPick);
+		}
+		else
+		{
+			std::cout << "You cannot carry that!";
 		}
 	}
 
-	if (!gotIt) std::cout << "There's nothing like that in here, sorry sea dog!"; 
-	std::cout << std::endl << ">";
+	std::cout << std::endl << ">";	
 }
 
 void Player::Drop(const char* itemName)
 {
-	bool gotIt = false;
+	Item* itemToDrop = (Item*)location->Find(itemName, item);
 
-	for (unsigned int i = 0; i < containedEntities.size(); i++)
+	if (itemToDrop == nullptr)
 	{
-		if (containedEntities[i]->name == itemName)
-		{
-			std::cout << "You dropped " << itemName << std::endl;
-			location->containedEntities.push_back(containedEntities[i]);
-			containedEntities.erase(containedEntities.begin() + i);
-			gotIt = true;
-		}
+		std::cout << "You're not carrying that, scoundrel!";
+	}
+	else
+	{
+		std::cout << "You droped " << itemName;
+		location->containedEntities.push_back(itemToDrop);
+		containedEntities.remove(itemToDrop);
 	}
 
-	if (!gotIt) std::cout << "You're not carrying that, scoundrel!" << std::endl << ">";
-	else std::cout << ">";
+	std::cout << std::endl << ">";
 }
 
 void Player::CheckItem(const char* itemName)
 {
 	bool gotIt = false;
 
-	for (std::vector<Entity*>::iterator it = containedEntities.begin(); it != containedEntities.end(); ++it)
+	Item* itemToCheck = (Item*)Find(itemName, item);
+	if (itemToCheck == nullptr) itemToCheck = (Item*)location->Find(itemName, item);
+	if (itemToCheck == nullptr)
 	{
-		if ((*it)->name == itemName && (*it)->entityType == item)
-		{
-			std::cout << (*it)->description << std::endl;
-			gotIt = true;
-		}
+		std::cout << "You don't have or see something like that, scallywag!";
 	}
-
-	if(!gotIt)
+	else
 	{
-		for (std::vector<Entity*>::iterator it = location->containedEntities.begin(); it != location->containedEntities.end(); ++it)
-		{
-			if ((*it)->name == itemName && (*it)->entityType == item)
-			{
-				std::cout << (*it)->description << std::endl;
-				gotIt = true;
-			}			
-		}
+		std::cout << itemToCheck->description;
 	}
-
-	if (!gotIt) std::cout << "You don't have or see something like that, scallywag!";
 
 	std::cout << std::endl << ">";
-
 }
 
-void Player::Use(const char* itemUsed, const char* itemUsedOn)
+bool Player::Put(const char* inserted, const char* container)
+{
+	Item* insertedItem = (Item*)Find(inserted, item);
+	Item* containerItem = (Item*)location->Find(container, item);
+
+	if (insertedItem == nullptr || containerItem == nullptr)
+	{
+		std::cout << "You're not able of doing that, parrot!";
+		return false;
+	}
+	else if (insertedItem->itemType != FOOD || containerItem->itemType != CONTAINER)
+	{
+		std::cout << "Why would you do that, picaroon?";
+		return false;
+	}
+	else
+	{
+		std::cout << "You put the " << insertedItem->name << " inside the " << containerItem->name;
+		containerItem->containedEntities.push_back(insertedItem);
+		containedEntities.remove(insertedItem);		
+	}
+
+	std::cout << std::endl << ">";
+	return true;
+}
+
+bool Player::Use(const char* itemUsed, const char* itemUsedOn)
 {
 	int itemCode = 0;
 	itemCode = convertItemToInt(itemUsed);
 
-	switch (itemCode)
+	Item* usingItem = (Item*)Find(itemUsed, item);
+	Item* usedOnItem = (Item*)location->Find(itemUsedOn, item);
+
+	if (usingItem == nullptr || usedOnItem == nullptr)
 	{
-	case 735:
-		if (containsEntity(itemUsed))
+		std::cout << "You're not able of doing that, parrot!" << std::endl;
+		return false;
+	}
+	else if (usingItem->itemType != USABLE || usedOnItem->itemType != UNPICKABLE)
+	{
+		std::cout << "You're not able of doing that, parrot!" << std::endl;
+		return false;
+	}
+	else 
+	{
+		switch (itemCode)
 		{
-			if ((strcmp(itemUsedOn, "Sails") == 0) && location->containsEntity(itemUsedOn))
+		case 735:
+			if (usedOnItem->name == "Sails")
 			{
-				if (!sailsDamaged) 
+				if (!sailsDamaged)
 				{
 					sailsDamaged = true;
 					std::cout << "You use the Cutlass to damage the ropes that hold the Sails together. They will have a bad time repairing this..." << std::endl;
@@ -150,10 +175,40 @@ void Player::Use(const char* itemUsed, const char* itemUsedOn)
 			else
 			{
 				std::cout << "That's not a good idea..." << std::endl;
-			}						
-		}	
+			}			
+			break;
 
-		break;
+		case 602:
+			if (usedOnItem->name == "Helm")
+			{
+				if (!helmDamaged)
+				{
+					helmDamaged = true;
+					std::cout << "You use the back of the hammer to disengage the helm. This will cause at least 30 minutes of repairs. More time to disappear." << std::endl;
+				}
+				else
+				{
+					std::cout << "Trying to make something else could be too loud. Better leave it like that." << std::endl;
+				}
+			}
+			else if (usedOnItem->name == "Boat")
+			{
+				if (containsEntity("Nails") && containsEntity("Plank"))
+				{
+					//c_str();
+					std::cout << "END OF THE GAME" << std::endl;
+				}
+			}
+			else
+			{
+				std::cout << "That's not a good idea..." << std::endl;
+			}			
+			break;
+		default:
+			std::cout << "That's not even a possibility, blowfish!" << std::endl;
+			break;
+		}
+		return true;
 	}
 
 }
