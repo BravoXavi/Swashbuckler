@@ -1,11 +1,11 @@
 #include "item.h"
 
-Item::Item(const char* itemName, const char* itemDescription, bool isPickable) : Entity(itemName, itemDescription)
+Item::Item(const char* itemName, const char* itemDescription, ItemType iType) : Entity(itemName, itemDescription)
 {
 	name = itemName;
 	description = itemDescription;
 	entityType = item;
-	pickable = isPickable;
+	itemType = iType;
 }
 
 Item::~Item()
@@ -14,8 +14,4 @@ Item::~Item()
 		delete *it;
 
 	containedEntities.clear();
-}
-
-bool Item::pickableEntity(){
-	return pickable;
 }

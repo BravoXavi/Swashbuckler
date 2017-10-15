@@ -3,15 +3,22 @@
 
 #include "entity.h"
 
+enum ItemType
+{
+	CONTAINER,
+	FOOD,
+	SIMPLE,
+	USABLE,
+	UNPICKABLE
+};
+
 class Item : public Entity {
 
 public:
-	Item(const char* name, const char* description, bool isPickable);
+	Item(const char* name, const char* description, ItemType type);
 	~Item();
 
-	virtual bool pickableEntity();
-
-	bool pickable;
+	ItemType itemType;
 
 private:
 
