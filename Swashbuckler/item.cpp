@@ -10,7 +10,7 @@ Item::Item(const char* itemName, const char* itemDescription, ItemType iType) : 
 
 Item::~Item()
 {
-	for (std::vector<Entity*>::iterator it = containedEntities.begin(); it != containedEntities.end(); ++it)
+	for (std::list<Entity*>::iterator it = containedEntities.begin(); it != containedEntities.end(); ++it)
 		delete *it;
 
 	containedEntities.clear();

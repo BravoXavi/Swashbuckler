@@ -20,7 +20,7 @@ public:
 
 	std::string name;
 	std::string description;
-	std::vector<Entity*> containedEntities;
+	std::list<Entity*> containedEntities;
 	type entityType;
 
 	Entity* Find(const char* name, type entityType) const;
@@ -29,7 +29,7 @@ public:
 	{
 		bool ret = false;
 
-		for (std::vector<Entity*>::iterator it = containedEntities.begin(); it != containedEntities.end(); ++it)
+		for (std::list<Entity*>::iterator it = containedEntities.begin(); it != containedEntities.end(); ++it)
 		{
 			if ((*it)->name == entityName)
 			{

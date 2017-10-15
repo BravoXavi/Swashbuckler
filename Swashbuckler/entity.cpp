@@ -12,7 +12,7 @@ Entity::~Entity()
 
 Entity* Entity::Find(const char* name, type entityType) const
 {
-	for (std::vector<Entity*>::const_iterator it = containedEntities.begin(); it != containedEntities.cend(); ++it)
+	for (std::list<Entity*>::const_iterator it = containedEntities.begin(); it != containedEntities.cend(); ++it)
 	{
 		if ((*it)->entityType == entityType)
 		{
