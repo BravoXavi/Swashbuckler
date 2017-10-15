@@ -24,6 +24,7 @@ public:
 	type entityType;
 
 	Entity* Find(const char* name, type entityType) const;
+	bool Find(const std::string& name) const;
 
 	virtual bool containsEntity(const char* entityName)
 	{
