@@ -23,10 +23,7 @@ public:
 	std::vector<Entity*> containedEntities;
 	type entityType;
 
-	virtual bool pickableEntity()
-	{
-		return false;
-	}
+	Entity* Find(const char* name, type entityType) const;
 
 	virtual bool containsEntity(const char* entityName)
 	{
