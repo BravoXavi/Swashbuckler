@@ -15,10 +15,14 @@ int main() {
 	World theShip;
 	char inputKey;
 
-	cout << "Yarr world!" << endl << "Welcome to Swashbuckler!" << endl;
-	cout << "Story story story..." << endl;
-	cout << "Story story story..." << endl;
-	cout << "Story story story..." << endl << ">";
+	cout << "Welcome to Swashbuckler!" << endl;
+	cout << "---------------------------------------------" << endl;
+	cout << "You wake up in the middle of the night, with a sound different than the usual snoring of the crew. Steps." << endl;
+	cout << "With a quick look, you see the Captain passing silently between everyone. You notice a small letter with the navy seal falling from his pocket. THE NAVY SEAL?!" << endl;
+	cout << "You wait until the captain goes back to his room and check the letter. Bad news. Very, very bad news." << endl;
+	cout << "A true pirate would fight the Captain to take command of the ship and save your crew. A true pirate." << endl;
+	cout << "LET'S GET OUT OF HERE!!" << endl;
+	cout << "---------------------------------------------" << endl << ">";
 
 	while (1) 
 	{	
@@ -52,6 +56,7 @@ int main() {
 	}
 
 	cout << "Thanks for playing Swashbuckler!" << endl << "See ya soon, landlubber!" << endl;
+	cout << "Xavier (Zelleryon) Bravo" << endl;
 	_getch();
 
 	return 0;
