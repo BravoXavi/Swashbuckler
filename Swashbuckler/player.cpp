@@ -201,10 +201,11 @@ bool Player::Use(const char* itemUsed, const char* itemUsedOn)
 			}
 			else if (usedOnItem->name == "Boat")
 			{
-				if (containsEntity("Nails") && containsEntity("Plank"))
+				if (Find("Nails") && Find("Plank"))
 				{
-					//c_str();
-					std::cout << "END OF THE GAME" << std::endl;
+					if(!fullBag) std::cout << "If you repair the ship and go without any food, it'll be a suicide." << std::endl;
+					else if(!helmDamaged || !sailsDamaged) std::cout << "END but not good" << std::endl;
+					else std::cout << "GOOD ENDING" << std::endl;					
 				}
 			}
 			else
