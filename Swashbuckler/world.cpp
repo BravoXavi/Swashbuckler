@@ -97,7 +97,29 @@ World::~World()
 	worldEntities.clear();
 }
 
-void World::readInput(vector<string> userInput) 
+bool World::worldTurn(vector<string> &userInput)
+{
+	clock_t timeChecker = clock();
+	if ((double)(timeChecker - worldTimer) > 5000.0)
+	{
+		//UPDATE WORLD
+		worldTimer = timeChecker;
+	}
+
+	if (userInput.size() > 0) 
+	{
+		std::cout << endl;
+		cout << "---------------------------------------------" << endl;
+		readInput(userInput);
+		return true;
+	}
+	else 
+	{
+		return false;
+	}
+}
+
+void World::readInput(vector<string> &userInput) 
 {
 	switch ( userInput.size() )
 	{
