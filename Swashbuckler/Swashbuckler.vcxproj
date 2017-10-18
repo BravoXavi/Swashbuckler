@@ -116,6 +116,7 @@
     <ClCompile Include="exit.cpp" />
     <ClCompile Include="item.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="npc.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="room.cpp" />
     <ClCompile Include="world.cpp" />
@@ -125,6 +126,7 @@
     <ClInclude Include="entity.h" />
     <ClInclude Include="exit.h" />
     <ClInclude Include="item.h" />
+    <ClInclude Include="npc.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="room.h" />
     <ClInclude Include="world.h" />
