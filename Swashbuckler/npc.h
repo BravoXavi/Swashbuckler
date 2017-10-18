@@ -6,7 +6,8 @@
 enum mood {
 	CALM,
 	MAD,
-	VIOLENT
+	VIOLENT,
+	KILL
 };
 
 class Npc : public Creature {
@@ -17,7 +18,8 @@ public:
 
 	bool aware = false;
 
-	void checkShip();
+	mood npcMood = CALM;
+	void checkShip(const Room* playerLocation);
 	void getMad();
 
 private:
