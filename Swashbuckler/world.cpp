@@ -89,7 +89,6 @@ bool World::worldTurn(vector<string> &userInput)
 	clock_t timeChecker = clock();
 	if ((double)(timeChecker - worldTimer) > turnTime)
 	{
-		//UPDATE WORLD
 		updateWorld();
 		worldTimer = timeChecker;
 	}
@@ -109,14 +108,17 @@ bool World::worldTurn(vector<string> &userInput)
 
 void World::updateWorld()
 {
-	if (!badguy->aware)
+	if (badguy->alive)
 	{
-		badguy->checkShip(mainguy->location);
-	}
-	else
-	{
-		if(turnTime > 4000.0) turnTime = turnTime - 1500.0;
-		badguy->getMad(mainguy->location);
+		if (!badguy->aware)
+		{
+			badguy->checkShip(mainguy->location);
+		}
+		else
+		{
+			if (turnTime > 4000.0) turnTime = turnTime - 1500.0;
+			badguy->getMad(mainguy->location);
+		}
 	}
 }
 
@@ -132,6 +134,13 @@ void World::readInput(vector<string> &userInput)
 			else if (userInput[0] == "Inventory")
 			{
 				mainguy->Inventory();
+			}
+			else if (userInput[0] == "Attack")
+			{
+				if (badguy->alive)
+					mainguy->Attack(badguy);
+				else
+					std::cout << "That's not necessary anymore, butcher..." << endl << ">";
 			}
 			else
 			{
