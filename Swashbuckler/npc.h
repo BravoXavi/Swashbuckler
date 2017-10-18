@@ -20,7 +20,7 @@ public:
 
 	mood npcMood = CALM;
 	void checkShip(const Room* playerLocation);
-	void getMad();
+	void getMad(const Room* playerLocation);
 
 private:
 
