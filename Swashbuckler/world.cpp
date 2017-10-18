@@ -9,6 +9,9 @@ using namespace std;
 
 World::World() 
 {
+	//Initializing turnTime to allow modifications later
+	turnTime = 7000.0;
+
 	//Room Creation
 	Room* sleeping_quarters = new Room("Sleeping quarters", "It's kinda dark, and everyone is sleeping. I should not wake anyone...");
 	Room* main_deck = new Room("Main deck", "need description");
@@ -84,7 +87,7 @@ World::~World()
 bool World::worldTurn(vector<string> &userInput)
 {
 	clock_t timeChecker = clock();
-	if ((double)(timeChecker - worldTimer) > 7000.0)
+	if ((double)(timeChecker - worldTimer) > turnTime)
 	{
 		//UPDATE WORLD
 		updateWorld();
@@ -106,8 +109,15 @@ bool World::worldTurn(vector<string> &userInput)
 
 void World::updateWorld()
 {
-	if (!badguy->aware) badguy->checkShip();
-	if (mainguy->location->name == "Poopdeck" || mainguy->location->name == "Main deck") badguy->aware = true;
+	if (!badguy->aware)
+	{
+		badguy->checkShip(mainguy->location);
+	}
+	else
+	{
+		if(turnTime > 1501.0) turnTime = turnTime - 1500.0;
+		badguy->getMad();
+	}
 }
 
 void World::readInput(vector<string> &userInput) 
