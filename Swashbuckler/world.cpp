@@ -1,9 +1,7 @@
 #include "world.h"
 #include "room.h"
-#include "player.h"
 #include "exit.h"
 #include "item.h"
-#include "npc.h"
 #include <iostream>
 #include <algorithm>
 
@@ -36,8 +34,9 @@ World::World()
 	Exit* exit8 = new Exit(south, poopdeck, main_deck);
 	poopdeck->exits.push_back(exit8);
 
-	//Player creation
+	//Player and Badguy creation
 	mainguy = new Player("Zelleryon", "A young, untrained but clever pirate", sleeping_quarters);
+	badguy = new Npc("Slinger", "The cruel and harsh lookout of the ship.", crows_nest);
 
 	//Item creation and storage - Pickable
 	Item* sword = new Item("Cutlass", "A slightly old, ugly but effective weapon.", USABLE);
@@ -67,14 +66,11 @@ World::World()
 	Item* boat = new Item("Boat", "You can sail away with this lil' boat, but it looks damaged. With some quick repairs it could work.", UNPICKABLE);
 	main_deck->containedEntities.push_back(boat);
 
-	//Lookout creation and storage
-	Npc* slinger = new Npc("Slinger", "The cruel and harsh lookout of the ship.");
-	crows_nest->containedEntities.push_back(slinger);
-
 	//Storage of all entities in World class container
 	worldEntities.push_back(sleeping_quarters);
 	worldEntities.push_back(main_deck);
 	worldEntities.push_back(mainguy);
+	worldEntities.push_back(badguy);
 }
 
 World::~World() 
@@ -88,9 +84,10 @@ World::~World()
 bool World::worldTurn(vector<string> &userInput)
 {
 	clock_t timeChecker = clock();
-	if ((double)(timeChecker - worldTimer) > 5000.0)
+	if ((double)(timeChecker - worldTimer) > 7000.0)
 	{
 		//UPDATE WORLD
+		updateWorld();
 		worldTimer = timeChecker;
 	}
 
@@ -105,6 +102,12 @@ bool World::worldTurn(vector<string> &userInput)
 	{
 		return false;
 	}
+}
+
+void World::updateWorld()
+{
+	if (!badguy->aware) badguy->checkShip();
+	if (mainguy->location->name == "Poopdeck" || mainguy->location->name == "Main deck") badguy->aware = true;
 }
 
 void World::readInput(vector<string> &userInput) 
