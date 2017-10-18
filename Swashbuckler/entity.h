@@ -27,21 +27,6 @@ public:
 	Entity* Find(const char* name, type entityType) const;
 	bool Find(const std::string& name) const;
 
-	virtual bool containsEntity(const char* entityName)
-	{
-		bool ret = false;
-
-		for (std::list<Entity*>::iterator it = containedEntities.begin(); it != containedEntities.end(); ++it)
-		{
-			if ((*it)->name == entityName)
-			{
-				ret = true;
-			}
-		}
-
-		return ret;
-	}
-
 private:
 	
 
