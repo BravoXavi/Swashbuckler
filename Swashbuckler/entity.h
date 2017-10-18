@@ -9,7 +9,8 @@ enum  type
 {
 	item,
 	creature,
-	room
+	room,
+	npc
 };
 
 class Entity {
