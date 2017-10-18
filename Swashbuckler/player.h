@@ -3,6 +3,7 @@
 
 #include "creature.h"
 #include "exit.h"
+#include "npc.h"
 
 class Player : public Creature {
 
@@ -19,7 +20,7 @@ public:
 	bool Use(const char* itemUsed, const char* itemUsedOn);
 	bool Put(const char* inserted, const char* container);
 	bool Go(Directions dir);
-
+	void Attack(Npc* badguy);
 	int convertItemToInt(const char* itemName);
 
 public:
