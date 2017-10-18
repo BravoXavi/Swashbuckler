@@ -164,12 +164,7 @@ bool Player::Use(const char* itemUsed, const char* itemUsedOn)
 	Item* usingItem = (Item*)Find(itemUsed, item);
 	Item* usedOnItem = (Item*)location->Find(itemUsedOn, item);
 
-	if (usingItem == nullptr || usedOnItem == nullptr)
-	{
-		std::cout << "You're not able of doing that, parrot!";
-		return false;
-	}
-	else if (usingItem->itemType != USABLE || usedOnItem->itemType != UNPICKABLE)
+	if (usingItem == nullptr || usedOnItem == nullptr || usingItem->itemType != USABLE || usedOnItem->itemType != UNPICKABLE)
 	{
 		std::cout << "You're not able of doing that, parrot!";
 		return false;
@@ -245,6 +240,23 @@ bool Player::Use(const char* itemUsed, const char* itemUsedOn)
 		return true;
 	}
 
+}
+
+void Player::Attack(Npc* badguy)
+{
+	if (location->name == "Crow's nest")
+	{
+		if (Find("Cutlass"))
+		{
+			std::cout << "Fast as the wind, you use your Cutlass to end poor Slingers miserable life. With a mad look in his eyes he falls from the Crow's nest into the sea and disappears." << std::endl;
+			badguy->alive = false;
+		}
+		else
+		{
+			std::cout << "You do not own a weapon!" << std::endl;
+		}
+	}
+	else std::cout << "You don't have any enemy close." << std::endl;
 }
 
 int Player::convertItemToInt(const char* itemName)
