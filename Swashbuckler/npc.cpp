@@ -8,6 +8,8 @@ Npc::Npc(const char* npcName, const char* npcDescription, Room* loc) : Creature(
 	description = npcDescription;
 	entityType = npc;
 	location = loc;
+	alive = true;
+	aware = false;
 }
 
 Npc::~Npc()
