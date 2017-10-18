@@ -6,6 +6,7 @@
 #include <time.h>
 #include "entity.h"
 #include "player.h"
+#include "npc.h"
 
 class World {
 
@@ -14,12 +15,15 @@ public:
 	~World();
 
 	void readInput(std::vector<std::string> &userInput);
-	bool worldTurn(std::vector<std::string> &userInput);
 	void ending();
-
+	void updateWorld();
+	bool worldTurn(std::vector<std::string> &userInput);
+	
 	std::vector<Entity*> worldEntities;
 	Player* mainguy;
+	Npc* badguy;
 	clock_t worldTimer;
+	double turnTime;
 
 private:
 
