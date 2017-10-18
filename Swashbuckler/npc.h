@@ -16,7 +16,8 @@ public:
 	Npc(const char* name, const char* description, Room* location);
 	~Npc();
 
-	bool aware = false;
+	bool aware;
+	bool alive;
 
 	mood npcMood = CALM;
 	void checkShip(const Room* playerLocation);
