@@ -14,7 +14,20 @@ Npc::~Npc()
 {
 }
 
-void Npc::checkShip()
+void Npc::checkShip(const Room* playerLocation)
 {
-	std::cout << "CHECKING SHIP" << std::endl;
+	if ((playerLocation->name == "Poopdeck" || playerLocation->name == "Main deck") && !aware)
+	{
+		aware = true;
+		std::cout << "NPC GETS MAD AND STARTS TO REACT!" << std::endl;
+	}
+	else 
+	{
+		std::cout << "CHECKING SHIP" << std::endl;
+	}
+}
+
+void Npc::getMad()
+{
+	std::cout << "GETTING MAD" << std::endl;
 }
