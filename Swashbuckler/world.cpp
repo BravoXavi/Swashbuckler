@@ -14,7 +14,7 @@ World::World()
 
 	//Room Creation
 	Room* sleeping_quarters = new Room("Sleeping quarters", "It's kinda dark, and everyone is sleeping. I should not wake anyone...");
-	Room* main_deck = new Room("Main deck", "need description");
+	Room* main_deck = new Room("Main deck", "DESCRIPTION. Slinger, the lookout, is awake at the crow's nest!! He could ruin the whole operation!!");
 	Room* storage_room = new Room("Storage room", "need description");
 	Room* poopdeck = new Room("Poopdeck", "need description");
 	Room* crows_nest = new Room("Crow's nest", "need description");
@@ -115,8 +115,8 @@ void World::updateWorld()
 	}
 	else
 	{
-		if(turnTime > 1501.0) turnTime = turnTime - 1500.0;
-		badguy->getMad();
+		if(turnTime > 4000.0) turnTime = turnTime - 1500.0;
+		badguy->getMad(mainguy->location);
 	}
 }
 
