@@ -179,11 +179,11 @@ bool Player::Use(const char* itemUsed, const char* itemUsedOn)
 				if (!sailsDamaged)
 				{
 					sailsDamaged = true;
-					std::cout << "You use the Cutlass to damage the ropes that hold the Sails together. They will have a bad time repairing this..." << std::endl;
+					std::cout << "You use the Cutlass to damage the ropes that hold the Sails together. They will have a bad time repairing this...";
 				}
 				else
 				{
-					std::cout << "You already did the job. Lower that Cutlass, butcher!" << std::endl;
+					std::cout << "You already did the job. Lower that Cutlass, butcher!";
 				}
 			}
 			else
@@ -239,7 +239,6 @@ bool Player::Use(const char* itemUsed, const char* itemUsedOn)
 		if(!escaped) std::cout << ">";
 		return true;
 	}
-
 }
 
 void Player::Attack(Npc* badguy)
@@ -257,6 +256,9 @@ void Player::Attack(Npc* badguy)
 		}
 	}
 	else std::cout << "You don't have any enemy close." << std::endl;
+
+	std::cout << "---------------------------------------------" << std::endl;
+	std::cout << ">";
 }
 
 int Player::convertItemToInt(const char* itemName)
