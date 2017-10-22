@@ -207,11 +207,12 @@ const void Player::Repair(const char* itemName)
 		}
 		else
 		{
-			std::cout << "How would you do that without some crafting materials, you slicky boy?";
-			std::cout << std::endl;
-			std::cout << "---------------------------------------------" << std::endl;
-			std::cout << ">";
+			std::cout << "How would you do that without some crafting materials, you slicky boy?";			
 		}
+
+		std::cout << std::endl;
+		std::cout << "---------------------------------------------" << std::endl;
+		std::cout << ">";
 	}
 }
 
