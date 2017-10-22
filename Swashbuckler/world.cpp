@@ -209,6 +209,10 @@ void World::readInput(vector<string> &userInput)
 					cout << "That's not a valid direction!" << endl << ">";
 				}
 			}
+			else if (userInput[0] == "Unlock")
+			{
+				mainguy->Unlock(userInput[1].c_str());
+			}
 			else if (userInput[0] == "Pick")
 			{
 				mainguy->PickUp(userInput[1].c_str());
