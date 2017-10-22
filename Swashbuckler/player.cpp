@@ -314,7 +314,15 @@ const bool Player::Go(const Directions dir)
 		{
 			if ((*it)->direction == dir) 
 			{
-				if (trapped)
+				if ((*it)->locked)
+				{
+					std::cout << "That room is locked, scallywag!";
+					std::cout << std::endl;
+					std::cout << "---------------------------------------------" << std::endl;
+					std::cout << ">";
+					return false;
+				}
+				else if (trapped)
 				{
 					if (location->name == "Main deck" && (*it)->destination->name == "Sleeping quarters")
 					{
@@ -347,30 +355,37 @@ const bool Player::Go(const Directions dir)
 //Unlocks a locked exit (Player must possess the key)
 const void Player::Unlock(const char* dir)
 {
+	bool found = false;
 	for (std::vector<Exit*>::iterator it = location->exits.begin(); it != location->exits.end(); ++it)
 	{
 		if ((*it)->direction == (*it)->directionNameEnum(dir))
 		{
+			found = true;
 			if ((*it)->locked)
 			{
 				if (Find((*it)->keyName))
 				{
 					(*it)->locked = false;
-					std::cout << "The door has been unlocked!" << std::endl;
+					std::cout << "The door has been unlocked!";
 				}
 				else
 				{
-					std::cout << "You don't have the key, landlubber!" << std::endl;
+					std::cout << "You don't have the key, landlubber!";
 				}
 			}
 			else
 			{
-				std::cout << "The door is not locked, sorry sea dog!" << std::endl;
+				std::cout << "The door is not locked, sorry sea dog!";
 			}
-		}
-		else
-		{
-			std::cout << "There's nothing there!" << std::endl;
-		}
+		}		
 	}
+
+	if (!found)
+	{
+		std::cout << "There's nothing there!";
+	}
+
+	std::cout << std::endl;
+	std::cout << "---------------------------------------------" << std::endl;
+	std::cout << ">";
 }
