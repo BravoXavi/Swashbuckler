@@ -23,7 +23,7 @@ const std::string Exit::directionName()
 	case north:
 		return "north";
 	case south:
-		return "nouth";
+		return "south";
 	case west:
 		return "west";
 	case east:
