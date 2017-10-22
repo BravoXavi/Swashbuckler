@@ -20,21 +20,21 @@ World::World()
 	Room* crows_nest = new Room("Crow's nest", "The lookouts favorite place. The salty wind goes through you, slightly cold. You can see everything from here.");
 
 	//Exit creation and storage
-	Exit* exit1 = new Exit(up, sleeping_quarters, main_deck);
+	Exit* exit1 = new Exit(up, sleeping_quarters, main_deck, false, "none");
 	sleeping_quarters->exits.push_back(exit1);
-	Exit* exit2 = new Exit(down, main_deck, sleeping_quarters);	
+	Exit* exit2 = new Exit(down, main_deck, sleeping_quarters, false, "none");	
 	main_deck->exits.push_back(exit2);
-	Exit* exit3 = new Exit(west, sleeping_quarters, storage_room);
+	Exit* exit3 = new Exit(west, sleeping_quarters, storage_room, true, "Storage Key");
 	sleeping_quarters->exits.push_back(exit3);
-	Exit* exit4 = new Exit(east, storage_room, sleeping_quarters);
+	Exit* exit4 = new Exit(east, storage_room, sleeping_quarters, false, "none");
 	storage_room->exits.push_back(exit4);
-	Exit* exit5 = new Exit(up, main_deck, crows_nest);
+	Exit* exit5 = new Exit(up, main_deck, crows_nest, false, "none");
 	main_deck->exits.push_back(exit5);
-	Exit* exit6 = new Exit(down, crows_nest, main_deck);	
+	Exit* exit6 = new Exit(down, crows_nest, main_deck, false, "none");
 	crows_nest->exits.push_back(exit6);
-	Exit* exit7 = new Exit(north, main_deck, poopdeck);
+	Exit* exit7 = new Exit(north, main_deck, poopdeck, false, "none");
 	main_deck->exits.push_back(exit7);
-	Exit* exit8 = new Exit(south, poopdeck, main_deck);
+	Exit* exit8 = new Exit(south, poopdeck, main_deck, false, "none");
 	poopdeck->exits.push_back(exit8);
 
 	//Player and Badguy creation
@@ -60,6 +60,8 @@ World::World()
 	storage_room->containedEntities.push_back(woodplank);
 	Item* spyglass = new Item("Spyglass", "An old spyglass stolen from the lookout.", SIMPLE);
 	crows_nest->containedEntities.push_back(spyglass);
+	Item* storagekey = new Item("Storage Key", "The key to the Storage room.", SIMPLE);
+	crows_nest->containedEntities.push_back(storagekey);
 
 	//Item creation and storage - UnPickable
 	Item* sails = new Item("Sails", "The sails of the ship. You can see the ropes that hold them together on the sides.", UNPICKABLE);
@@ -70,6 +72,7 @@ World::World()
 	main_deck->containedEntities.push_back(boat);
 
 	//Storage of all entities in World class container
+	worldEntities.push_back(storagekey);
 	worldEntities.push_back(spyglass);
 	worldEntities.push_back(woodplank);
 	worldEntities.push_back(bag);
