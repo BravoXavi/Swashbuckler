@@ -44,7 +44,7 @@ World::World()
 	//Item creation and storage - Pickable
 	Item* sword = new Item("Cutlass", "A slightly old, ugly but effective weapon.", USABLE);
 	sleeping_quarters->containedEntities.push_back(sword);
-	Item* letter = new Item("Letter", "Long description...", SIMPLE);
+	Item* letter = new Item("Letter", "[...] By our majesty's name, this letter will serve as a forgiveness for the former pirate Joe 'Hound' Emmerick [...] surrendering of his whole crew to the navy [...] crew will be hanged with no possibility of trial. Signed: Admiral Robert Blake.", SIMPLE);
 	sleeping_quarters->containedEntities.push_back(letter);	
 	Item* hammer = new Item("Hammer", "A small hammer. Nothing special.", USABLE);
 	poopdeck->containedEntities.push_back(hammer);
