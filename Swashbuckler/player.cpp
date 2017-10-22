@@ -60,6 +60,20 @@ void Player::Inventory()
 	std::cout << ">";
 }
 
+void Player::Exits()
+{
+	std::cout << "Exits: " << std::endl;
+	for (std::vector<Exit*>::iterator it = location->exits.begin(); it != location->exits.end(); ++it)
+	{
+
+		std::cout << "- " << (*it)->destination->name << " (" << (*it)->directionName() << ") ";
+		std::cout << std::endl;
+	}
+
+	std::cout << "---------------------------------------------" << std::endl;
+	std::cout << ">";
+}
+
 void Player::PickUp(const char* itemName)
 {
 	Item* itemToPick = (Item*)location->Find(itemName, item);
@@ -289,8 +303,25 @@ bool Player::Go(Directions dir)
 		{
 			if ((*it)->direction == dir) 
 			{
-				location = (*it)->destination;
-				return true;
+				if (trapped)
+				{
+					if (location->name == "Main deck" && (*it)->destination->name == "Sleeping quarters")
+					{
+						std::cout << "You cannot just avoid Slinger, coward!!";
+						std::cout << std::endl;		
+						return false;
+					}
+					else
+					{
+						location = (*it)->destination;
+						return true;
+					}
+				}
+				else
+				{
+					location = (*it)->destination;
+					return true;
+				}			
 			}
 		}
 

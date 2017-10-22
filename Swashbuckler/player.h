@@ -13,10 +13,11 @@ public:
 
 	void Look();
 	void Inventory();
+	void Exits();
 	void PickUp(const char* itemName);
 	void Drop(const char* itemName);
 	void CheckItem(const char* itemName);
-
+	
 	bool Use(const char* itemUsed, const char* itemUsedOn);
 	bool Put(const char* inserted, const char* container);
 	bool Go(Directions dir);
@@ -25,6 +26,7 @@ public:
 
 public:
 	//Win conditions
+	bool trapped = false;
 	bool sailsDamaged = false;
 	bool helmDamaged = false;
 	bool fullBag = false;
