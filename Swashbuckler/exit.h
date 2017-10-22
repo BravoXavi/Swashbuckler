@@ -18,7 +18,7 @@ class Room;
 class Exit {
 
 public:
-	Exit(Directions direction, Room* source, Room* destination);
+	Exit(Directions direction, Room* source, Room* destination, bool locked);
 	~Exit();
 
 	const std::string directionName();
@@ -26,6 +26,8 @@ public:
 public:
 	Room* destination;
 	Directions direction;
+	bool locked;
+	const char* keyName;
 
 private:
 	Room* source;

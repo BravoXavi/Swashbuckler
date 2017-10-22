@@ -1,10 +1,12 @@
 #include "exit.h"
 
-Exit::Exit(Directions direc, Room* sour, Room* dest)
+Exit::Exit(Directions direc, Room* sour, Room* dest, bool isLocked, const char* key)
 {
 	direction = direc;
 	source = sour;
 	destination = dest;
+	locked = isLocked;
+	keyName = key;
 }
 
 Exit::~Exit() 
