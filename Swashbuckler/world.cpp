@@ -115,12 +115,17 @@ void World::updateWorld()
 		if (!badguy->aware)
 		{
 			badguy->checkShip(mainguy->location);
+			if (badguy->aware)	mainguy->trapped = true;
 		}
 		else
-		{
+		{			
 			if (turnTime > 4000.0) turnTime = turnTime - 1500.0;
 			badguy->getMad(mainguy->location);
 		}
+	}
+	else
+	{
+		mainguy->trapped = false;
 	}
 }
 
@@ -136,6 +141,10 @@ void World::readInput(vector<string> &userInput)
 			else if (userInput[0] == "Inventory")
 			{
 				mainguy->Inventory();
+			}
+			else if (userInput[0] == "Exits")
+			{
+				mainguy->Exits();
 			}
 			else if (userInput[0] == "Attack")
 			{
