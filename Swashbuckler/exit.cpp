@@ -39,11 +39,11 @@ const std::string Exit::directionName()
 
 const Directions Exit::directionNameEnum(const char* dir)
 {
-	if (dir == "north") return north;
-	else if (dir == "south") return south;
-	else if (dir == "west") return west;
-	else if (dir == "east") return east;
-	else if (dir == "up") return up;
-	else if (dir == "down") return down;
+	if (strcmp(dir, "north") == 0) return north;
+	else if (strcmp(dir, "south") == 0) return south;
+	else if (strcmp(dir, "west") == 0) return west;
+	else if (strcmp(dir, "east") == 0) return east;
+	else if (strcmp(dir, "up") == 0) return up;
+	else if (strcmp(dir, "down") == 0) return down;
 	else return north;
 }
