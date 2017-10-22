@@ -37,6 +37,7 @@ const std::string Exit::directionName()
 	return "";
 }
 
+//Returns a Direction enum matching a string
 const Directions Exit::directionNameEnum(const char* dir)
 {
 	if (strcmp(dir, "north") == 0) return north;
