@@ -10,14 +10,14 @@ using namespace std;
 World::World() 
 {
 	//Initializing turnTime to allow modifications later
-	turnTime = 8000.0;
+	turnTime = 12000.0;
 
 	//Room Creation
-	Room* sleeping_quarters = new Room("Sleeping quarters", "It's kinda dark, and everyone is sleeping. I should not wake anyone...");
+	Room* sleeping_quarters = new Room("Sleeping quarters", "It's kinda dark, and everyone is sleeping. You should not wake anyone...");
 	Room* main_deck = new Room("Main deck", "The main deck of the ship. It's very peacefull at night, and you hear the waves hitting the ship. A light can be seen up, in the Crow's nest.");
 	Room* storage_room = new Room("Storage room", "A couple of handy materials, food and general things. Everything the crew loots ends up here.");
 	Room* poopdeck = new Room("Poopdeck", "You can see the rest of the ship from here, and the helm is resting, without anyone moving it at night.");
-	Room* crows_nest = new Room("Crow's nest", "The lookouts favorite place. The salty wind goes through you, slightly cold. You can see everything from here.");
+	Room* crows_nest = new Room("Crow's nest", "The lookouts' favourite place. The salty wind goes through you, slightly cold. You can see everything from here.");
 
 	//Exit creation and storage
 	Exit* exit1 = new Exit(up, sleeping_quarters, main_deck, false, "none");
@@ -175,6 +175,13 @@ void World::readInput(vector<string> &userInput)
 				else
 					std::cout << "That's not necessary anymore, butcher..." << endl << ">";
 			}
+			else
+			{
+				cout << "I didn't understand you, mate";
+				cout << std::endl;
+				cout << "---------------------------------------------" << endl;
+				cout << ">";
+			}
 			break;
 
 		case 2:
@@ -206,7 +213,10 @@ void World::readInput(vector<string> &userInput)
 				}
 				else
 				{
-					cout << "That's not a valid direction!" << endl << ">";
+					cout << "That's not a valid direction!";
+					cout << std::endl;
+					cout << "---------------------------------------------" << endl;
+					cout << ">";
 				}
 			}
 			else if (userInput[0] == "Unlock")
@@ -225,6 +235,17 @@ void World::readInput(vector<string> &userInput)
 			{
 				mainguy->CheckItem(userInput[1].c_str());
 			}
+			else if (userInput[0] == "Repair")
+			{
+				mainguy->Repair(userInput[1].c_str());
+			}
+			else
+			{
+				cout << "I didn't understand you, mate";
+				cout << std::endl;
+				cout << "---------------------------------------------" << endl;
+				cout << ">";
+			}
 			break;
 
 		case 4:
@@ -235,6 +256,13 @@ void World::readInput(vector<string> &userInput)
 			else if (userInput[0] == "Put")
 			{
 				mainguy->Put(userInput[1].c_str(), userInput[3].c_str());
+			}
+			else
+			{
+				cout << "I didn't understand you, mate";
+				cout << std::endl;
+				cout << "---------------------------------------------" << endl;
+				cout << ">";
 			}
 			break;
 
