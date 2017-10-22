@@ -212,7 +212,13 @@ void World::readInput(vector<string> &userInput)
 
 void World::ending()
 {
-	if (badguy->alive)
+	if (badguy->shot)
+	{
+		std::cout << "Tired of you, and beeing the cruel pirate he is, Slinger does not think twice before making sure you won't disobey again." << std::endl;
+		std::cout << "The last thing you listen is a loud sound. And then, all black." << std::endl;
+		std::cout << "Davy Jones be with you. YOU DIED." << std::endl;
+	}
+	else if (badguy->alive)
 	{
 		std::cout << "You managed to move fast and silently enough to get out of there with the boat without Slinger beeing able to stop you!" << std::endl;
 		std::cout << "Yeah. But did you really think that the lookout is someone with enough bad aiming to not be able of stopping this situation?" << std::endl;

@@ -16,12 +16,14 @@ public:
 	Npc(const char* name, const char* description, Room* location);
 	~Npc();
 
-	bool aware;
-	bool alive;
-
 	mood npcMood = CALM;
 	void checkShip(const Room* playerLocation);
 	void getMad(const Room* playerLocation);
+
+public:
+	bool aware = false;
+	bool alive = false;
+	bool shot = false;
 
 private:
 

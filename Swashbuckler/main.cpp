@@ -61,7 +61,7 @@ int main() {
 			tokens.clear();
 		}
 
-		if (theShip.mainguy->escaped)
+		if (theShip.mainguy->escaped || theShip.badguy->shot)
 		{
 			theShip.ending();			
 			break;

@@ -54,7 +54,7 @@ void Npc::getMad(const Room* playerLocation)
 				npcMood = KILL;
 				break;
 			case KILL:
-				std::cout << "BANG!!" << std::endl;
+				shot = true;
 				break;
 		}		
 	}
