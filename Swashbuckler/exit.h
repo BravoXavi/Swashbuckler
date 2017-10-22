@@ -21,6 +21,9 @@ public:
 	Exit(Directions direction, Room* source, Room* destination);
 	~Exit();
 
+	std::string directionName();
+
+public:
 	Room* destination;
 	Directions direction;
 
