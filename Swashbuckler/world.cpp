@@ -10,14 +10,14 @@ using namespace std;
 World::World() 
 {
 	//Initializing turnTime to allow modifications later
-	turnTime = 7000.0;
+	turnTime = 8000.0;
 
 	//Room Creation
 	Room* sleeping_quarters = new Room("Sleeping quarters", "It's kinda dark, and everyone is sleeping. I should not wake anyone...");
-	Room* main_deck = new Room("Main deck", "DESCRIPTION. Slinger, the lookout, is awake at the crow's nest!! He could ruin the whole operation!!");
-	Room* storage_room = new Room("Storage room", "need description");
-	Room* poopdeck = new Room("Poopdeck", "need description");
-	Room* crows_nest = new Room("Crow's nest", "need description");
+	Room* main_deck = new Room("Main deck", "The main deck of the ship. It's very peacefull at night, and you hear the waves hitting the ship. A light can be seen up, in the Crow's nest.");
+	Room* storage_room = new Room("Storage room", "A couple of handy materials, food and general things. Everything the crew loots ends up here.");
+	Room* poopdeck = new Room("Poopdeck", "You can see the rest of the ship from here, and the helm is resting, without anyone moving it at night.");
+	Room* crows_nest = new Room("Crow's nest", "The lookouts favorite place. The salty wind goes through you, slightly cold. You can see everything from here.");
 
 	//Exit creation and storage
 	Exit* exit1 = new Exit(up, sleeping_quarters, main_deck);
@@ -119,7 +119,7 @@ void World::updateWorld()
 		}
 		else
 		{			
-			if (turnTime > 4000.0) turnTime = turnTime - 1500.0;
+			if (turnTime > 5000.0) turnTime = turnTime - 1000.0;
 			badguy->getMad(mainguy->location);
 		}
 	}
