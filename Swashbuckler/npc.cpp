@@ -57,6 +57,8 @@ void Npc::getMad(const Room* playerLocation)
 	else
 	{
 		std::cout << "Slinger, The Lookout: Bla bla bla... (Boring complains about beeing out of bed... Seems like you only have one way to go)" << std::endl;
+		if (npcMood == VIOLENT) npcMood = MAD;
+		else if (npcMood == MAD) npcMood = CALM;
 	}
 	std::cout << "---------------------------------------------" << std::endl;
 	std::cout << ">";
