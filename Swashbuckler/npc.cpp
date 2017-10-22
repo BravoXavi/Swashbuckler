@@ -14,6 +14,10 @@ Npc::Npc(const char* npcName, const char* npcDescription, Room* loc) : Creature(
 
 Npc::~Npc()
 {
+	for (std::list<Entity*>::iterator it = containedEntities.begin(); it != containedEntities.end(); ++it)
+		delete *it;
+
+	containedEntities.clear();
 }
 
 void Npc::checkShip(const Room* playerLocation)

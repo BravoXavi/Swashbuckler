@@ -13,6 +13,10 @@ Room::~Room()
 	for (std::vector<Exit*>::iterator it = exits.begin(); it != exits.end(); ++it)
 		delete *it;
 
+	for (std::list<Entity*>::iterator it = containedEntities.begin(); it != containedEntities.end(); ++it)
+		delete *it;
+
+	containedEntities.clear();
 	exits.clear();
 }
 

@@ -17,4 +17,6 @@ Creature::~Creature()
 		delete *it;
 
 	containedEntities.clear();
+
+	delete location;
 }

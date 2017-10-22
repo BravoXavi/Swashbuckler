@@ -82,6 +82,8 @@ World::~World()
 		delete *it;
 
 	worldEntities.clear();
+	delete badguy;
+	delete mainguy;
 }
 
 bool World::worldTurn(vector<string> &userInput)

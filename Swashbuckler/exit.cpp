@@ -9,4 +9,6 @@ Exit::Exit(Directions direc, Room* sour, Room* dest)
 
 Exit::~Exit() 
 {
+	delete source;
+	delete destination;
 }
