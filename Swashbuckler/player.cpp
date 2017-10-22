@@ -345,7 +345,32 @@ const bool Player::Go(const Directions dir)
 }
 
 //Unlocks a locked exit (Player must possess the key)
-const void Player::Unlock(const Directions dir)
+const void Player::Unlock(const char* dir)
 {
-
+	for (std::vector<Exit*>::iterator it = location->exits.begin(); it != location->exits.end(); ++it)
+	{
+		if ((*it)->direction == (*it)->directionNameEnum(dir))
+		{
+			if ((*it)->locked)
+			{
+				if (Find((*it)->keyName))
+				{
+					(*it)->locked = false;
+					std::cout << "The door has been unlocked!" << std::endl;
+				}
+				else
+				{
+					std::cout << "You don't have the key, landlubber!" << std::endl;
+				}
+			}
+			else
+			{
+				std::cout << "The door is not locked, sorry sea dog!" << std::endl;
+			}
+		}
+		else
+		{
+			std::cout << "There's nothing there!" << std::endl;
+		}
+	}
 }
