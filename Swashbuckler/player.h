@@ -14,6 +14,7 @@ public:
 	const void Look();
 	const void Inventory();
 	const void Exits();
+	const void Unlock(const Directions dir);
 	const void PickUp(const char* itemName);
 	const void Drop(const char* itemName);
 	const void CheckItem(const char* itemName);	

@@ -343,3 +343,9 @@ const bool Player::Go(const Directions dir)
 		return false;
 	}
 }
+
+//Unlocks a locked exit (Player must possess the key)
+const void Player::Unlock(const Directions dir)
+{
+
+}
