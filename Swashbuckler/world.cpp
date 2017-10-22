@@ -24,7 +24,7 @@ World::World()
 	sleeping_quarters->exits.push_back(exit1);
 	Exit* exit2 = new Exit(down, main_deck, sleeping_quarters, false, "none");	
 	main_deck->exits.push_back(exit2);
-	Exit* exit3 = new Exit(west, sleeping_quarters, storage_room, true, "Storage Key");
+	Exit* exit3 = new Exit(west, sleeping_quarters, storage_room, true, "Key");
 	sleeping_quarters->exits.push_back(exit3);
 	Exit* exit4 = new Exit(east, storage_room, sleeping_quarters, false, "none");
 	storage_room->exits.push_back(exit4);
@@ -60,7 +60,7 @@ World::World()
 	storage_room->containedEntities.push_back(woodplank);
 	Item* spyglass = new Item("Spyglass", "An old spyglass stolen from the lookout.", SIMPLE);
 	crows_nest->containedEntities.push_back(spyglass);
-	Item* storagekey = new Item("Storage Key", "The key to the Storage room.", SIMPLE);
+	Item* storagekey = new Item("Key", "The key of the Storage room.", SIMPLE);
 	crows_nest->containedEntities.push_back(storagekey);
 
 	//Item creation and storage - UnPickable
@@ -225,7 +225,6 @@ void World::readInput(vector<string> &userInput)
 			{
 				mainguy->CheckItem(userInput[1].c_str());
 			}
-
 			break;
 
 		case 4:
@@ -240,7 +239,10 @@ void World::readInput(vector<string> &userInput)
 			break;
 
 		default:
-			cout << "I didn't understand you, mate" << endl << ">";
+			cout << "I didn't understand you, mate";
+			cout << std::endl;
+			cout << "---------------------------------------------" << endl;
+			cout << ">";
 			break;
 	}	
 }
