@@ -15,6 +15,7 @@ public:
 	const void Inventory();
 	const void Exits();
 	const void Unlock(const char* dir);
+	const void Repair(const char* itemName);
 	const void PickUp(const char* itemName);
 	const void Drop(const char* itemName);
 	const void CheckItem(const char* itemName);	
