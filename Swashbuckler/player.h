@@ -11,21 +11,20 @@ public:
 	Player(const char* name, const char* description, Room* location);
 	~Player();
 
-	void Look();
-	void Inventory();
-	void Exits();
-	void PickUp(const char* itemName);
-	void Drop(const char* itemName);
-	void CheckItem(const char* itemName);
+	const void Look();
+	const void Inventory();
+	const void Exits();
+	const void PickUp(const char* itemName);
+	const void Drop(const char* itemName);
+	const void CheckItem(const char* itemName);	
+	const bool Use(const char* itemUsed, const char* itemUsedOn);	
+	const bool Go(const Directions dir);
 	
-	bool Use(const char* itemUsed, const char* itemUsedOn);
 	bool Put(const char* inserted, const char* container);
-	bool Go(Directions dir);
 	void Attack(Npc* badguy);
-	int convertItemToInt(const char* itemName);
-
+	
 public:
-	//Win conditions
+	//Player flags
 	bool trapped = false;
 	bool sailsDamaged = false;
 	bool helmDamaged = false;
@@ -33,7 +32,7 @@ public:
 	bool escaped = false;
 
 private:
-
+	const int convertItemToInt(const char* itemName);
 };
 
 #endif // !CLASS_PLAYER

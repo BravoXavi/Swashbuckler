@@ -20,7 +20,7 @@ Npc::~Npc()
 	containedEntities.clear();
 }
 
-void Npc::checkShip(const Room* playerLocation)
+const void Npc::checkShip(const Room* playerLocation)
 {
 	if ((playerLocation->name == "Poopdeck" || playerLocation->name == "Main deck") && !aware)
 	{
@@ -33,7 +33,7 @@ void Npc::checkShip(const Room* playerLocation)
 	}
 }
 
-void Npc::getMad(const Room* playerLocation)
+const void Npc::getMad(const Room* playerLocation)
 {
 	std::cout << std::endl;
 	std::cout << "---------------------------------------------" << std::endl;

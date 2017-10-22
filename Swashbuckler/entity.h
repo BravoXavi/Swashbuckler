@@ -19,16 +19,14 @@ public:
 	Entity(const char* entityN, const char* entityD);
 	~Entity();
 
+	const Entity* Find(const char* name, type entityType) const;
+	const bool Find(const std::string& name) const;
+
+public:
 	std::string name;
 	std::string description;
 	std::list<Entity*> containedEntities;
 	type entityType;
-
-	Entity* Find(const char* name, type entityType) const;
-	bool Find(const std::string& name) const;
-
-private:
-	
 
 };
 

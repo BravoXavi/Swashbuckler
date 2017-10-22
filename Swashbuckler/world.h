@@ -14,19 +14,21 @@ public:
 	World();
 	~World();
 
+	const void ending();
 	void readInput(std::vector<std::string> &userInput);
-	void ending();
-	void updateWorld();
 	bool worldTurn(std::vector<std::string> &userInput);
 	
-	std::vector<Entity*> worldEntities;
+public:	
 	Player* mainguy;
 	Npc* badguy;
 	clock_t worldTimer;
-	double turnTime;
 
 private:
+	const void updateWorld();	
 
+private:
+	std::vector<Entity*> worldEntities;
+	double turnTime;
 };
 
 #endif // !CLASS_WORLD

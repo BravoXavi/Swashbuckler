@@ -15,9 +15,8 @@ public:
 
 	const void checkRoom();
 
+public:
 	std::vector<Exit*> exits;
-
-private:
 
 };
 

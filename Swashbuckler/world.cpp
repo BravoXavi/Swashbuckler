@@ -52,9 +52,9 @@ World::World()
 	storage_room->containedEntities.push_back(nails);
 	Item* oranges = new Item("Oranges", "The favorite defense of all pirates against scurvy! Pretty tasty, too.", FOOD);
 	storage_room->containedEntities.push_back(oranges);
-	Item* bottle = new Item("Water", "A small bottle with water. This could be perfect for the trip.", FOOD);
+	Item* bottle = new Item("Water", "A small bottle of water. This could be perfect for the trip.", FOOD);
 	crows_nest->containedEntities.push_back(bottle);
-	Item* bag = new Item("Bag", "A small bag. Can be used to carry something.", CONTAINER);
+	Item* bag = new Item("Bag", "A small bag. It can be used to carry something.", CONTAINER);
 	poopdeck->containedEntities.push_back(bag);
 	Item* woodplank = new Item("Plank", "A pretty solid plank. Could be used to close a door or cover something damaged.", SIMPLE);
 	storage_room->containedEntities.push_back(woodplank);
@@ -108,7 +108,7 @@ bool World::worldTurn(vector<string> &userInput)
 	}
 }
 
-void World::updateWorld()
+const void World::updateWorld()
 {
 	if (badguy->alive)
 	{
@@ -219,7 +219,7 @@ void World::readInput(vector<string> &userInput)
 	}	
 }
 
-void World::ending()
+const void World::ending()
 {
 	if (badguy->shot)
 	{

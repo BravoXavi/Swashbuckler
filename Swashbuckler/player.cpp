@@ -19,7 +19,7 @@ Player::~Player()
 	containedEntities.clear();
 }
 
-void Player::Look() 
+const void Player::Look() 
 {
 	std::cout << "You're in the " << location->name << "." << std::endl << location->description << "." << std::endl;
 	
@@ -39,7 +39,7 @@ void Player::Look()
 	}
 }
 
-void Player::Inventory()
+const void Player::Inventory()
 {
 	if(containedEntities.empty()) std::cout << "You're not carrying anything, shark bait!";
 	else
@@ -60,7 +60,7 @@ void Player::Inventory()
 	std::cout << ">";
 }
 
-void Player::Exits()
+const void Player::Exits()
 {
 	std::cout << "Exits: " << std::endl;
 	for (std::vector<Exit*>::iterator it = location->exits.begin(); it != location->exits.end(); ++it)
@@ -74,7 +74,7 @@ void Player::Exits()
 	std::cout << ">";
 }
 
-void Player::PickUp(const char* itemName)
+const void Player::PickUp(const char* itemName)
 {
 	Item* itemToPick = (Item*)location->Find(itemName, item);
 
@@ -101,7 +101,7 @@ void Player::PickUp(const char* itemName)
 	std::cout << ">";
 }
 
-void Player::Drop(const char* itemName)
+const void Player::Drop(const char* itemName)
 {
 	Item* itemToDrop = (Item*)location->Find(itemName, item);
 
@@ -121,7 +121,7 @@ void Player::Drop(const char* itemName)
 	std::cout << ">";
 }
 
-void Player::CheckItem(const char* itemName)
+const void Player::CheckItem(const char* itemName)
 {
 	bool gotIt = false;
 
@@ -170,7 +170,7 @@ bool Player::Put(const char* inserted, const char* container)
 	return true;
 }
 
-bool Player::Use(const char* itemUsed, const char* itemUsedOn)
+const bool Player::Use(const char* itemUsed, const char* itemUsedOn)
 {
 	int itemCode = 0;
 	itemCode = convertItemToInt(itemUsed);
@@ -275,7 +275,7 @@ void Player::Attack(Npc* badguy)
 	std::cout << ">";
 }
 
-int Player::convertItemToInt(const char* itemName)
+const int Player::convertItemToInt(const char* itemName)
 {
 	int output = 0;
 	std::string toConvert = itemName;
@@ -287,7 +287,7 @@ int Player::convertItemToInt(const char* itemName)
 	return output;
 }
 
-bool Player::Go(Directions dir)
+const bool Player::Go(const Directions dir)
 {
 	if (location->exits.empty()) 
 	{

@@ -10,7 +10,7 @@ Entity::~Entity()
 {
 }
 
-Entity* Entity::Find(const char* name, type entityType) const
+const Entity* Entity::Find(const char* name, type entityType) const
 {
 	for (std::list<Entity*>::const_iterator it = containedEntities.begin(); it != containedEntities.cend(); ++it)
 	{
@@ -21,10 +21,10 @@ Entity* Entity::Find(const char* name, type entityType) const
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 
-bool Entity::Find(const std::string& name) const
+const bool Entity::Find(const std::string& name) const
 {
 	for (std::list<Entity*>::const_iterator it = containedEntities.begin(); it != containedEntities.cend(); ++it)
 	{

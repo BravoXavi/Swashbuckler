@@ -13,7 +13,7 @@ Exit::~Exit()
 	delete destination;
 }
 
-std::string Exit::directionName()
+const std::string Exit::directionName()
 {
 	switch (direction) 
 	{

@@ -15,10 +15,9 @@ class Npc : public Creature {
 public:
 	Npc(const char* name, const char* description, Room* location);
 	~Npc();
-
-	mood npcMood = CALM;
-	void checkShip(const Room* playerLocation);
-	void getMad(const Room* playerLocation);
+	
+	const void checkShip(const Room* playerLocation);
+	const void getMad(const Room* playerLocation);
 
 public:
 	bool aware = false;
@@ -26,7 +25,7 @@ public:
 	bool shot = false;
 
 private:
-
+	mood npcMood = CALM;
 };
 
 #endif // !CLASS_NPC
