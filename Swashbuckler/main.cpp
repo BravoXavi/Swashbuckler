@@ -18,8 +18,8 @@ int main() {
 
 	std::cout << "Welcome to Swashbuckler! - The true pirates Zork-like game" << std::endl;
 	std::cout << "---------------------------------------------" << std::endl;
-	std::cout << "You wake up in the ship, in the middle of the night, with a sound different than the usual snoring of the crew. Steps." << std::endl;
-	std::cout << "With a quick look, you see the Captain passing silently between everyone. You notice a small letter with the navy seal falling from his pocket. THE NAVY SEAL?!" << std::endl;
+	std::cout << "You wake up on the ship, in the middle of the night, with a sound different than the usual snoring of the crew. Steps." << std::endl;
+	std::cout << "With a glance, you see the Captain passing silently between everyone. You notice a small letter with the navy seal falling from his pocket. THE NAVY SEAL?!" << std::endl;
 	std::cout << "You wait until the captain goes back to his room and check the letter. Bad news. Very, very bad news." << std::endl;
 	std::cout << "A true pirate would fight the Captain to take command of the ship and save your crew. A true pirate." << std::endl;
 	std::cout << "A pity that you're just a novice! YOU BETTER GET OUT OF HERE SOON, LAD!!" << std::endl;
