@@ -26,7 +26,7 @@ const void Player::Look()
 	
 	if (!location->containedEntities.empty())
 	{
-		std::cout << "I can see something handy in here: ";
+		std::cout << "You can see something handy in here: ";
 
 		for (std::list<Entity*>::iterator it = location->containedEntities.begin(); it != location->containedEntities.end(); ++it)
 		{
@@ -88,7 +88,7 @@ const void Player::PickUp(const char* itemName)
 	}
 	else 
 	{
-		if (itemToPick->entityType != UNPICKABLE)
+		if (itemToPick->itemType != UNPICKABLE)
 		{
 			std::cout << "You picked " << itemName;
 			containedEntities.push_back(itemToPick);
@@ -156,11 +156,17 @@ bool Player::Put(const char* inserted, const char* container)
 	if (insertedItem == nullptr || containerItem == nullptr)
 	{
 		std::cout << "You're not able of doing that, parrot!";
+		std::cout << std::endl;
+		std::cout << "---------------------------------------------" << std::endl;
+		std::cout << ">";
 		return false;
 	}
 	else if (insertedItem->itemType != FOOD || containerItem->itemType != CONTAINER)
 	{
 		std::cout << "Why would you do that, picaroon?";
+		std::cout << std::endl;
+		std::cout << "---------------------------------------------" << std::endl;
+		std::cout << ">";
 		return false;
 	}
 	else
@@ -177,6 +183,38 @@ bool Player::Put(const char* inserted, const char* container)
 	return true;
 }
 
+//Repairs the boat and ends the game
+const void Player::Repair(const char* itemName)
+{
+	if (strcmp(itemName, "Boat") == 0)
+	{
+		if (Find("Nails") && Find("Plank") && Find("Hammer"))
+		{
+			std::cout << "Do you wants to repair the boat and sail away? (Y/N)" << std::endl;
+			char response;
+			std::cin >> response;
+			switch (response)
+			{
+			case 'Y':
+				escaped = true;
+				break;
+			case 'N':
+				break;
+			default:
+				std::cout << "That's not an answer, lad.";
+				break;
+			}
+		}
+		else
+		{
+			std::cout << "How would you do that without some crafting materials, you slicky boy?";
+			std::cout << std::endl;
+			std::cout << "---------------------------------------------" << std::endl;
+			std::cout << ">";
+		}
+	}
+}
+
 //Used an item on another item (contained by Player or Room). The behaviour is reduced to some interactions.
 const bool Player::Use(const char* itemUsed, const char* itemUsedOn)
 {
@@ -189,6 +227,9 @@ const bool Player::Use(const char* itemUsed, const char* itemUsedOn)
 	if (usingItem == nullptr || usedOnItem == nullptr || usingItem->itemType != USABLE || usedOnItem->itemType != UNPICKABLE)
 	{
 		std::cout << "You're not able of doing that, parrot!";
+		std::cout << std::endl;
+		std::cout << "---------------------------------------------" << std::endl;
+		std::cout << ">";
 		return false;
 	}
 	else 
@@ -225,26 +266,6 @@ const bool Player::Use(const char* itemUsed, const char* itemUsedOn)
 				else
 				{
 					std::cout << "Trying to make something else could be too loud. Better leave it like that.";
-				}
-			}
-			else if (usedOnItem->name == "Boat")
-			{
-				if (Find("Nails") && Find("Plank"))
-				{
-					std::cout << "Do you wants to repair the boat and sail away? (Y/N)" << std::endl;
-					char response;
-					std::cin >> response;
-					switch (response)
-					{
-						case 'Y':
-							escaped = true;
-							break;
-						case 'N':
-							break;
-						default: 
-							std::cout << "That's not an answer, lad.";
-							break;
-					}										
 				}
 			}
 			else
