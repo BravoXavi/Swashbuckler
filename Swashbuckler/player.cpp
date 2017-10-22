@@ -68,8 +68,8 @@ const void Player::Exits()
 	std::cout << "Exits: " << std::endl;
 	for (std::vector<Exit*>::iterator it = location->exits.begin(); it != location->exits.end(); ++it)
 	{
-
-		std::cout << "- " << (*it)->destination->name << " (" << (*it)->directionName() << ") ";
+		if((*it)->locked)	std::cout << "- " << (*it)->destination->name << " (" << (*it)->directionName() << ", Locked) ";
+		else std::cout << "- " << (*it)->destination->name << " (" << (*it)->directionName() << ") ";
 		std::cout << std::endl;
 	}
 
