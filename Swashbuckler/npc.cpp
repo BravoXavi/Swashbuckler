@@ -28,7 +28,7 @@ const void Npc::checkShip(const Room* playerLocation)
 		aware = true;
 		std::cout << std::endl;
 		std::cout << "---------------------------------------------" << std::endl;
-		std::cout << "Slinger, The Lookout: HEY YOU! What are you doing there? Climb to the crow's nest NOW!!" << std::endl;
+		std::cout << "Slinger, The Lookout: HEY YOU! What are you doing there? Climb to the Crow's nest NOW!!" << std::endl;
 		std::cout << "---------------------------------------------" << std::endl;
 		std::cout << ">";
 	}
