@@ -22,6 +22,7 @@ public:
 	~Exit();
 
 	const std::string directionName();
+	const Directions directionNameEnum(const char* dir);
 
 public:
 	Room* destination;
