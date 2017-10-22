@@ -10,6 +10,7 @@ Entity::~Entity()
 {
 }
 
+//Returns an Entity of the name and type specified (Item identification)
 const Entity* Entity::Find(const char* name, type entityType) const
 {
 	for (std::list<Entity*>::const_iterator it = containedEntities.begin(); it != containedEntities.cend(); ++it)
@@ -24,6 +25,7 @@ const Entity* Entity::Find(const char* name, type entityType) const
 	return nullptr;
 }
 
+//Returns true if it finds an entity with the specified name
 const bool Entity::Find(const std::string& name) const
 {
 	for (std::list<Entity*>::const_iterator it = containedEntities.begin(); it != containedEntities.cend(); ++it)

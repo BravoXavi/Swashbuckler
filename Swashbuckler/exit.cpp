@@ -13,6 +13,7 @@ Exit::~Exit()
 	delete destination;
 }
 
+//Returns a string with the direction of the exit
 const std::string Exit::directionName()
 {
 	switch (direction) 

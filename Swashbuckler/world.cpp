@@ -70,7 +70,22 @@ World::World()
 	main_deck->containedEntities.push_back(boat);
 
 	//Storage of all entities in World class container
+	worldEntities.push_back(spyglass);
+	worldEntities.push_back(woodplank);
+	worldEntities.push_back(bag);
+	worldEntities.push_back(bottle);
+	worldEntities.push_back(oranges);
+	worldEntities.push_back(nails);
+	worldEntities.push_back(hammer);
+	worldEntities.push_back(letter);
+	worldEntities.push_back(sword);
+	worldEntities.push_back(sails);
+	worldEntities.push_back(helm);
+	worldEntities.push_back(boat);
 	worldEntities.push_back(sleeping_quarters);
+	worldEntities.push_back(poopdeck);
+	worldEntities.push_back(crows_nest);
+	worldEntities.push_back(storage_room);
 	worldEntities.push_back(main_deck);
 	worldEntities.push_back(mainguy);
 	worldEntities.push_back(badguy);
@@ -82,10 +97,12 @@ World::~World()
 		delete *it;
 
 	worldEntities.clear();
+
 	delete badguy;
 	delete mainguy;
 }
 
+//Reads user input and checks if its time to update the world (NPC Behaviour).
 bool World::worldTurn(vector<string> &userInput)
 {
 	clock_t timeChecker = clock();
@@ -108,6 +125,7 @@ bool World::worldTurn(vector<string> &userInput)
 	}
 }
 
+//Updates the status of the world (Calls for NPC behaviours)
 const void World::updateWorld()
 {
 	if (badguy->alive)
@@ -129,6 +147,7 @@ const void World::updateWorld()
 	}
 }
 
+//Input reading and calls for player actions
 void World::readInput(vector<string> &userInput) 
 {
 	switch ( userInput.size() )
@@ -219,6 +238,7 @@ void World::readInput(vector<string> &userInput)
 	}	
 }
 
+//Ending flavour text with conditionals
 const void World::ending()
 {
 	if (badguy->shot)

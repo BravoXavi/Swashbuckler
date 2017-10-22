@@ -22,13 +22,14 @@ int main() {
 	std::cout << "With a quick look, you see the Captain passing silently between everyone. You notice a small letter with the navy seal falling from his pocket. THE NAVY SEAL?!" << std::endl;
 	std::cout << "You wait until the captain goes back to his room and check the letter. Bad news. Very, very bad news." << std::endl;
 	std::cout << "A true pirate would fight the Captain to take command of the ship and save your crew. A true pirate." << std::endl;
-	std::cout << "YOU BETTER GET OUT OF HERE SOON, LAD!!" << std::endl;
+	std::cout << "A pity that you're just a novice! YOU BETTER GET OUT OF HERE SOON, LAD!!" << std::endl;
 	std::cout << "---------------------------------------------" << std::endl << ">";
 
 	theShip.worldTimer = clock();
 
 	while (1) 
-	{			
+	{	
+		//User Input loop
 		if (_kbhit())
 		{
 			inputKey = _getch();
@@ -56,11 +57,13 @@ int main() {
 			}
 		}
 
+		//Update the world turn (Affects NPC behaviour)
 		if (theShip.worldTurn(tokens))
 		{
 			tokens.clear();
 		}
 
+		//Ending step (Good or Bad)
 		if (theShip.mainguy->escaped || theShip.badguy->shot)
 		{
 			theShip.ending();			

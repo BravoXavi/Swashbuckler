@@ -19,6 +19,7 @@ Player::~Player()
 	containedEntities.clear();
 }
 
+//Returns Name, Description, and items contained in the players room
 const void Player::Look() 
 {
 	std::cout << "You're in the " << location->name << "." << std::endl << location->description << "." << std::endl;
@@ -39,6 +40,7 @@ const void Player::Look()
 	}
 }
 
+//Returns all items contained by the player
 const void Player::Inventory()
 {
 	if(containedEntities.empty()) std::cout << "You're not carrying anything, shark bait!";
@@ -60,6 +62,7 @@ const void Player::Inventory()
 	std::cout << ">";
 }
 
+//Returns exits and directions of the players room
 const void Player::Exits()
 {
 	std::cout << "Exits: " << std::endl;
@@ -74,6 +77,7 @@ const void Player::Exits()
 	std::cout << ">";
 }
 
+//Moves an item from the list in the Room to the one in the Player (Inventory)
 const void Player::PickUp(const char* itemName)
 {
 	Item* itemToPick = (Item*)location->Find(itemName, item);
@@ -101,6 +105,7 @@ const void Player::PickUp(const char* itemName)
 	std::cout << ">";
 }
 
+//Moves an item from the list in the Player to the one in the Room
 const void Player::Drop(const char* itemName)
 {
 	Item* itemToDrop = (Item*)location->Find(itemName, item);
@@ -121,6 +126,7 @@ const void Player::Drop(const char* itemName)
 	std::cout << ">";
 }
 
+//Returns the item description contained by the player or the room
 const void Player::CheckItem(const char* itemName)
 {
 	bool gotIt = false;
@@ -141,6 +147,7 @@ const void Player::CheckItem(const char* itemName)
 	std::cout << ">";
 }
 
+//Puts an item inside the list of another item (Just able in CONTAINER items)
 bool Player::Put(const char* inserted, const char* container)
 {
 	Item* insertedItem = (Item*)Find(inserted, item);
@@ -170,6 +177,7 @@ bool Player::Put(const char* inserted, const char* container)
 	return true;
 }
 
+//Used an item on another item (contained by Player or Room). The behaviour is reduced to some interactions.
 const bool Player::Use(const char* itemUsed, const char* itemUsedOn)
 {
 	int itemCode = 0;
@@ -255,6 +263,7 @@ const bool Player::Use(const char* itemUsed, const char* itemUsedOn)
 	}
 }
 
+//Used to attack an NPC. 'sword' item is needed.
 void Player::Attack(Npc* badguy)
 {
 	if (location->name == "Crow's nest")
@@ -275,6 +284,7 @@ void Player::Attack(Npc* badguy)
 	std::cout << ">";
 }
 
+//Returns the name string of an item as a numeric value. Used to SWITCH between items.
 const int Player::convertItemToInt(const char* itemName)
 {
 	int output = 0;
@@ -287,6 +297,7 @@ const int Player::convertItemToInt(const char* itemName)
 	return output;
 }
 
+//Modifies the player location if an exit of the specified direction exists.
 const bool Player::Go(const Directions dir)
 {
 	if (location->exits.empty()) 

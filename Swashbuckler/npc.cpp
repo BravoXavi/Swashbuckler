@@ -20,6 +20,7 @@ Npc::~Npc()
 	containedEntities.clear();
 }
 
+//NPC Behaviour. Checks if the Player is in one of the controlled rooms and changes its status if it is.
 const void Npc::checkShip(const Room* playerLocation)
 {
 	if ((playerLocation->name == "Poopdeck" || playerLocation->name == "Main deck") && !aware)
@@ -33,6 +34,7 @@ const void Npc::checkShip(const Room* playerLocation)
 	}
 }
 
+//NPC Behaviour. Changes the state of the NPC if the player is not in the same location as the NPC and modifies the state (Increasing/Decreasing).
 const void Npc::getMad(const Room* playerLocation)
 {
 	std::cout << std::endl;

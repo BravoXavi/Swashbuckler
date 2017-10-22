@@ -20,6 +20,7 @@ Room::~Room()
 	exits.clear();
 }
 
+//Returns the name and description of the room.
 const void Room::checkRoom() 
 {
 	std::cout << "You're in " + name + "." << std::endl << description << std::endl;
