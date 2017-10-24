@@ -1,9 +1,9 @@
+#include <iostream>
+#include <algorithm>
 #include "world.h"
 #include "room.h"
 #include "exit.h"
 #include "item.h"
-#include <iostream>
-#include <algorithm>
 
 using namespace std;
 

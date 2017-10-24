@@ -1,11 +1,8 @@
 #include <iostream>
-#include <stdio.h>
 #include <conio.h>
 #include <string>
-#include "world.h"
 #include <sstream>
-#include <algorithm>
-#include <iterator>
+#include "world.h"
 
 using namespace std;
 

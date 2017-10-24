@@ -1,6 +1,6 @@
+#include <iostream>
 #include "npc.h"
 #include "room.h"
-#include <iostream>
 
 Npc::Npc(const char* npcName, const char* npcDescription, Room* loc) : Creature(npcName, npcDescription, loc)
 {

@@ -7,8 +7,7 @@ Entity::Entity(const char* entityN, const char* entityD)
 }
 
 Entity::~Entity()
-{
-}
+{}
 
 //Returns an Entity of the name and type specified (Item identification)
 const Entity* Entity::Find(const char* name, type entityType) const

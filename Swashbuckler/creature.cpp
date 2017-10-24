@@ -1,8 +1,6 @@
 #include <iostream>
 #include "creature.h"
 
-using namespace std;
-
 Creature::Creature(const char* creatureName, const char* creatureDescription, Room* loc) : Entity(creatureName, creatureDescription)
 {
 	name = creatureName;

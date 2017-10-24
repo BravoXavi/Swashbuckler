@@ -1,7 +1,7 @@
 #ifndef CLASS_EXIT
 #define CLASS_EXIT
 
-#include "room.h"
+#include <string>
 
 enum Directions
 {

@@ -2,7 +2,6 @@
 #define CLASS_ENTITY
 
 #include <string>
-#include <vector>
 #include <list>
 
 enum  type

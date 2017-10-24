@@ -1,9 +1,8 @@
 #ifndef CLASS_ROOM
 #define CLASS_ROOM
 
-#include "entity.h"
-#include "exit.h"
 #include <vector>
+#include "entity.h"
 
 class Exit;
 

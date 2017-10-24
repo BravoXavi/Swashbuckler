@@ -1,6 +1,5 @@
 #include <iostream>
 #include "player.h"
-#include "exit.h"
 #include "item.h"
 
 Player::Player(const char* playerName, const char* playerDescription, Room* loc) : Creature(playerName, playerDescription, loc)
