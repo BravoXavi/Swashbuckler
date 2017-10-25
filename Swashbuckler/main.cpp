@@ -13,7 +13,7 @@ int main() {
 	char inputKey;
 	vector<string> tokens;
 
-	std::cout << "Welcome to Swashbuckler! - The true pirates Zork-like game" << std::endl;
+	std::cout << "Welcome to SWASHBUCKLER! - The true pirates Zork-like game" << std::endl;
 	std::cout << "---------------------------------------------" << std::endl;
 	std::cout << "You wake up on the ship, in the middle of the night, with a sound different than the usual snoring of the crew. Steps." << std::endl;
 	std::cout << "With a glance, you see the Captain passing silently between everyone. You notice a small letter with the navy seal falling from his pocket. THE NAVY SEAL?!" << std::endl;
