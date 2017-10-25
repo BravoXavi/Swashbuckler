@@ -1,4 +1,5 @@
 #include "exit.h"
+#include "room.h"
 
 Exit::Exit(Directions direc, Room* sour, Room* dest, bool isLocked, const char* key)
 {
