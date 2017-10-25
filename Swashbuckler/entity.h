@@ -16,7 +16,7 @@ class Entity {
 
 public:
 	Entity(const char* entityN, const char* entityD);
-	~Entity();
+	virtual ~Entity();
 
 	const Entity* Find(const char* name, type entityType) const;
 	const bool Find(const std::string& name) const;
