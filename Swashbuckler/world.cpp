@@ -10,13 +10,13 @@ using namespace std;
 World::World() 
 {
 	//Initializing turnTime to allow modifications later
-	turnTime = 12000.0;
+	turnTime = 13000.0;
 
 	//Room Creation
 	Room* sleeping_quarters = new Room("Sleeping quarters", "It's kinda dark, and everyone is sleeping. You should not wake anyone...");
 	Room* main_deck = new Room("Main deck", "The main deck of the ship. It's very peacefull at night, and you hear the waves hitting the ship. A light can be seen up, in the Crow's nest.");
 	Room* storage_room = new Room("Storage room", "A couple of handy materials, food and general things. Everything the crew loots ends up here.");
-	Room* poopdeck = new Room("Poopdeck", "You can see the rest of the ship from here, and the helm is resting, without anyone moving it at night.");
+	Room* poopdeck = new Room("Poopdeck", "The rest of the ship can be seen from this position and the helm is resting in front of you, without anyone moving it at night.");
 	Room* crows_nest = new Room("Crow's nest", "The lookouts' favourite place. The salty wind goes through you, slightly cold. You can see everything from here.");
 
 	//Exit creation and storage
@@ -32,9 +32,9 @@ World::World()
 	main_deck->exits.push_back(exit5);
 	Exit* exit6 = new Exit(down, crows_nest, main_deck, false, "none");
 	crows_nest->exits.push_back(exit6);
-	Exit* exit7 = new Exit(north, main_deck, poopdeck, false, "none");
+	Exit* exit7 = new Exit(south, main_deck, poopdeck, false, "none");
 	main_deck->exits.push_back(exit7);
-	Exit* exit8 = new Exit(south, poopdeck, main_deck, false, "none");
+	Exit* exit8 = new Exit(north, poopdeck, main_deck, false, "none");
 	poopdeck->exits.push_back(exit8);
 
 	//Player and Badguy creation
@@ -306,14 +306,15 @@ const void World::ending()
 			std::cout << "But you did not think about something. The ship sailed to port without any problem, where all your crew was captured by the Navy." << std::endl;
 			std::cout << "Only your old Captain survided and is now a very influential man. Let's hope he do not uses that power to look for you..." << std::endl;
 		}
-		if (mainguy->Find("Spyglass"))
+		if (mainguy->fullBag && mainguy->Find("Spyglass"))
 		{
-			std::cout << "Because you took the Spyglass with you, you could see an island and sail there, where you finally escaped. Good job!! Davy Jones smiles at you, lad!" << std::endl;
+			std::cout << "Because you took the Spyglass with you, you could see an island and sail there. With your bag of supplies, you sustained yourself enough to reach it, where you finally escaped. Good job!! Davy Jones smiles at you, lad!" << std::endl;
 		}
 		else
 		{
-			std::cout << "Sadly, you did not take a Spyglass with you. Getting in a boat in the middle of the sea is a real problem when you don't know where to go." << std::endl;
-			std::cout << "Look at the bright side! Now you're the captain of your own ship! At least while you have something to eat..." << std::endl;
+			std::cout << "Sadly, you thought that the sea was going to have mercy on you. To be sure to reach a safe pleace you need to SEE where are you leading and have ENOUGH SUPPLIES to reach it. Without one of them ..." << std::endl;
+			std::cout << "Sadly, you did not take a Spyglass with you. Getting in a boat in the middle of the sea is a real problem when you don't know where to go and " << std::endl;
+			std::cout << "But well, look at the bright side! Now you're the captain of your own ship! At least while you have something to eat..." << std::endl;
 		}
 	}
 }
