@@ -33,10 +33,12 @@ const void Player::Look()
 			std::cout << (*it)->name;
 		}
 
-		std::cout << "." << std::endl;
-		std::cout << "---------------------------------------------" << std::endl;
-		std::cout << ">";
+		std::cout << ".";		
 	}
+
+	std::cout << std::endl;
+	std::cout << "---------------------------------------------" << std::endl;
+	std::cout << ">";
 }
 
 //Returns all items contained by the player
@@ -68,7 +70,7 @@ const void Player::Exits()
 	for (std::vector<Exit*>::iterator it = location->exits.begin(); it != location->exits.end(); ++it)
 	{
 		if((*it)->locked)	std::cout << "- " << (*it)->destination->name << " (" << (*it)->directionName() << ", Locked) ";
-		else std::cout << "- " << (*it)->destination->name << " (" << (*it)->directionName() << ") ";
+		else				std::cout << "- " << (*it)->destination->name << " (" << (*it)->directionName() << ") ";
 		std::cout << std::endl;
 	}
 
@@ -131,6 +133,7 @@ const void Player::CheckItem(const char* itemName)
 	bool gotIt = false;
 
 	Item* itemToCheck = (Item*)Find(itemName, item);
+
 	if (itemToCheck == nullptr) itemToCheck = (Item*)location->Find(itemName, item);
 	if (itemToCheck == nullptr)
 	{
@@ -230,6 +233,7 @@ const bool Player::Use(const char* itemUsed, const char* itemUsedOn)
 		std::cout << std::endl;
 		std::cout << "---------------------------------------------" << std::endl;
 		std::cout << ">";
+
 		return false;
 	}
 	else 
@@ -273,13 +277,16 @@ const bool Player::Use(const char* itemUsed, const char* itemUsedOn)
 				std::cout << "That's not a good idea...";
 			}			
 			break;
+
 		default:
 			std::cout << "That's not even a possibility, blowfish!";
 			break;
 		}
+
 		std::cout << std::endl;
 		std::cout << "---------------------------------------------" << std::endl;
 		if(!escaped) std::cout << ">";
+
 		return true;
 	}
 }
