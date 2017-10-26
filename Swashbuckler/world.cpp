@@ -1,11 +1,10 @@
 #include <iostream>
 #include <algorithm>
+#include <string>
 #include "world.h"
 #include "room.h"
 #include "exit.h"
 #include "item.h"
-
-using namespace std;
 
 World::World() 
 {
@@ -96,17 +95,14 @@ World::World()
 
 World::~World() 
 {
-	for (vector<Entity*>::iterator it = worldEntities.begin(); it != worldEntities.end(); ++it)
+	for (std::vector<Entity*>::iterator it = worldEntities.begin(); it != worldEntities.end(); ++it)
 		delete *it;
 
 	worldEntities.clear();
-
-	delete badguy;
-	delete mainguy;
 }
 
 //Reads user input and checks if its time to update the world (NPC Behaviour).
-bool World::worldTurn(vector<string> &userInput)
+bool World::worldTurn(std::vector<std::string> &userInput)
 {
 	clock_t timeChecker = clock();
 	if ((double)(timeChecker - worldTimer) > turnTime)
@@ -117,8 +113,8 @@ bool World::worldTurn(vector<string> &userInput)
 
 	if (userInput.size() > 0) 
 	{
-		std::cout << endl;
-		cout << "---------------------------------------------" << endl;
+		std::cout << std::endl;
+		std::cout << "---------------------------------------------" << std::endl;
 		readInput(userInput);
 		return true;
 	}
@@ -151,126 +147,126 @@ const void World::updateWorld()
 }
 
 //Input reading and calls for player actions
-void World::readInput(vector<string> &userInput) 
+void World::readInput(std::vector<std::string> &userInput) 
 {
 	switch ( userInput.size() )
 	{
 		case 1:
-			if (userInput[0] == "Look")
+			if (compareInput(userInput[0].c_str(), "Look"))
 			{
 				mainguy->Look();
 			}
-			else if (userInput[0] == "Inventory")
+			else if (compareInput(userInput[0].c_str(), "Inventory"))
 			{
 				mainguy->Inventory();
 			}
-			else if (userInput[0] == "Exits")
+			else if (compareInput(userInput[0].c_str(), "Exits"))
 			{
 				mainguy->Exits();
-			}
-			else if (userInput[0] == "Attack")
-			{
-				if (badguy->alive)
-					mainguy->Attack(badguy);
-				else
-					std::cout << "That's not necessary anymore, butcher..." << endl << ">";
-			}
+			}			
 			else
 			{
-				cout << "I didn't understand you, mate";
-				cout << std::endl;
-				cout << "---------------------------------------------" << endl;
-				cout << ">";
+				std::cout << "I didn't understand you, mate";
+				std::cout << std::endl;
+				std::cout << "---------------------------------------------" << std::endl;
+				std::cout << ">";
 			}
 			break;
 
 		case 2:
-			if (userInput[0] == "Go")
+			if (compareInput(userInput[0].c_str(), "Go"))
 			{
-				if (userInput[1] == "north")
+				if (compareInput(userInput[1].c_str(), "North"))
 				{
 					if (mainguy->Go(north)) mainguy->Look();
 				}
-				else if (userInput[1] == "south")
+				else if (compareInput(userInput[1].c_str(), "South"))
 				{
 					if (mainguy->Go(south)) mainguy->Look();
 				}
-				else if (userInput[1] == "east")
+				else if (compareInput(userInput[1].c_str(), "East"))
 				{
 					if (mainguy->Go(east)) mainguy->Look();
 				}
-				else if (userInput[1] == "west")
+				else if (compareInput(userInput[1].c_str(), "West"))
 				{
 					if (mainguy->Go(west)) mainguy->Look();
 				}
-				else if (userInput[1] == "up")
+				else if (compareInput(userInput[1].c_str(), "Up"))
 				{
 					if (mainguy->Go(up)) mainguy->Look();
 				}
-				else if (userInput[1] == "down")
+				else if (compareInput(userInput[1].c_str(), "Down"))
 				{
 					if (mainguy->Go(down)) mainguy->Look();
 				}
 				else
 				{
-					cout << "That's not a valid direction!";
-					cout << std::endl;
-					cout << "---------------------------------------------" << endl;
-					cout << ">";
+					std::cout << "That's not a valid direction!";
+					std::cout << std::endl;
+					std::cout << "---------------------------------------------" << std::endl;
+					std::cout << ">";
 				}
 			}
-			else if (userInput[0] == "Unlock")
+			else if (compareInput(userInput[0].c_str(), "Unlock"))
 			{
 				mainguy->Unlock(userInput[1].c_str());
 			}
-			else if (userInput[0] == "Pick")
+			else if (compareInput(userInput[0].c_str(), "Pick"))
 			{
 				mainguy->PickUp(userInput[1].c_str());
 			}
-			else if (userInput[0] == "Drop")
+			else if (compareInput(userInput[0].c_str(), "Drop"))
 			{
 				mainguy->Drop(userInput[1].c_str());
 			}
-			else if (userInput[0] == "Check")
+			else if (compareInput(userInput[0].c_str(), "Check"))
 			{
 				mainguy->CheckItem(userInput[1].c_str());
 			}
-			else if (userInput[0] == "Repair")
+			else if (compareInput(userInput[0].c_str(), "Repair"))
 			{
 				mainguy->Repair(userInput[1].c_str());
 			}
+			else if (compareInput(userInput[0].c_str(), "Kill"))
+			{
+				if (badguy->alive)
+					mainguy->Kill(badguy, userInput[1].c_str());
+				else
+					std::cout << "That's not necessary anymore, butcher..." << std::endl << ">";
+			}
 			else
 			{
-				cout << "I didn't understand you, mate";
-				cout << std::endl;
-				cout << "---------------------------------------------" << endl;
-				cout << ">";
+				std::cout << "I didn't understand you, mate";
+				std::cout << std::endl;
+				std::cout << "---------------------------------------------" << std::endl;
+				std::cout << ">";
 			}
 			break;
 
 		case 4:
-			if (userInput[0] == "Use")
+			if (compareInput(userInput[0].c_str(), "Use"))
 			{
 				mainguy->Use(userInput[1].c_str(), userInput[3].c_str());
 			}
-			else if (userInput[0] == "Put")
+			else if (compareInput(userInput[0].c_str(), "Put"))
 			{
 				mainguy->Put(userInput[1].c_str(), userInput[3].c_str());
 			}
 			else
 			{
-				cout << "I didn't understand you, mate";
-				cout << std::endl;
-				cout << "---------------------------------------------" << endl;
-				cout << ">";
+				std::cout << "I didn't understand you, mate";
+				std::cout << std::endl;
+				std::cout << "---------------------------------------------" << std::endl;
+				std::cout << ">";
 			}
 			break;
 
 		default:
-			cout << "I didn't understand you, mate";
-			cout << std::endl;
-			cout << "---------------------------------------------" << endl;
-			cout << ">";
+			std::cout << "I didn't understand you, mate";
+			std::cout << std::endl;
+			std::cout << "---------------------------------------------" << std::endl;
+			std::cout << ">";
 			break;
 	}	
 }
@@ -317,4 +313,10 @@ const void World::ending()
 			std::cout << "But well, look at the bright side! Now you're the captain of your own ship! At least while you have something to eat..." << std::endl;
 		}
 	}
+}
+
+//Compares the two inputs (Solves upper/lowerCase problems)
+const bool World::compareInput(const char* a, const char* b)
+{
+	return _stricmp(a, b) == 0;
 }

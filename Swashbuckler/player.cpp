@@ -11,12 +11,7 @@ Player::Player(const char* playerName, const char* playerDescription, Room* loc)
 }
 
 Player::~Player() 
-{
-	for (std::list<Entity*>::iterator it = containedEntities.begin(); it != containedEntities.end(); ++it)
-		delete *it;
-
-	containedEntities.clear();
-}
+{}
 
 //Returns Name, Description, and items contained in the players room
 const void Player::Look() 
@@ -291,22 +286,26 @@ const bool Player::Use(const char* itemUsed, const char* itemUsedOn)
 	}
 }
 
-//Used to attack an NPC. 'sword' item is needed.
-void Player::Attack(Npc* badguy)
+//Used to Kill an NPC. 'sword' (Cutlass) item is needed.
+void Player::Kill(Npc* badguy, const char* npcName)
 {
-	if (location->name == "Crow's nest")
+	if (strcmp(npcName, "Slinger") == 0)
 	{
-		if (Find("Cutlass"))
+		if (location->name == "Crow's nest")
 		{
-			std::cout << "Fast as the wind, you use your Cutlass to end poor Slingers miserable life. With a mad look in his eyes he falls from the Crow's nest into the sea and disappears." << std::endl;
-			badguy->alive = false;
+			if (Find("Cutlass"))
+			{
+				std::cout << "Fast as the wind, you use your Cutlass to end poor Slingers miserable life. With a mad look in his eyes he falls from the Crow's nest into the sea and disappears." << std::endl;
+				badguy->alive = false;
+			}
+			else
+			{
+				std::cout << "You do not own a weapon!" << std::endl;
+			}
 		}
-		else
-		{
-			std::cout << "You do not own a weapon!" << std::endl;
-		}
+		else std::cout << "You don't have any enemy close." << std::endl;
 	}
-	else std::cout << "You don't have any enemy close." << std::endl;
+	else std::cout << "Don't just say random names before wanting to Kill someone, brute!" << std::endl;
 
 	std::cout << "---------------------------------------------" << std::endl;
 	std::cout << ">";

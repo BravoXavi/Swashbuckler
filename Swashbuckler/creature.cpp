@@ -10,11 +10,4 @@ Creature::Creature(const char* creatureName, const char* creatureDescription, Ro
 }
 
 Creature::~Creature() 
-{
-	for (std::list<Entity*>::iterator it = containedEntities.begin(); it != containedEntities.end(); ++it)
-		delete *it;
-
-	containedEntities.clear();
-
-	delete location;
-}
+{}

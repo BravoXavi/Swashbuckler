@@ -13,12 +13,7 @@ Npc::Npc(const char* npcName, const char* npcDescription, Room* loc) : Creature(
 }
 
 Npc::~Npc()
-{
-	for (std::list<Entity*>::iterator it = containedEntities.begin(); it != containedEntities.end(); ++it)
-		delete *it;
-
-	containedEntities.clear();
-}
+{}
 
 //NPC Behaviour. Checks if the Player is in one of the controlled rooms and changes its status if it is.
 const void Npc::checkShip(const Room* playerLocation)

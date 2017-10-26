@@ -11,10 +11,7 @@ Exit::Exit(Directions direc, Room* sour, Room* dest, bool isLocked, const char* 
 }
 
 Exit::~Exit() 
-{
-	delete source;
-	delete destination;
-}
+{}
 
 //Returns a string with the direction of the exit
 const std::string Exit::directionName()

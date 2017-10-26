@@ -23,7 +23,7 @@ public:
 	const bool Go(const Directions dir);
 	
 	bool Put(const char* inserted, const char* container);
-	void Attack(Npc* badguy);
+	void Kill(Npc* badguy, const char* npcName);
 	
 public:
 	//Player flags

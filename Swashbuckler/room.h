@@ -12,8 +12,6 @@ public:
 	Room(const char* name, const char* description);
 	~Room();
 
-	const void checkRoom();
-
 public:
 	std::vector<Exit*> exits;
 

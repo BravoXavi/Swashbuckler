@@ -14,9 +14,10 @@ public:
 	World();
 	~World();
 
-	const void ending();
 	void readInput(std::vector<std::string> &userInput);
 	bool worldTurn(std::vector<std::string> &userInput);
+	const void ending();
+	const bool compareInput(const char* a, const char* b);
 	
 public:	
 	Player* mainguy;
