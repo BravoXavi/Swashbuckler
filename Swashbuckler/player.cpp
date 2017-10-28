@@ -207,9 +207,12 @@ const void Player::Repair(const char* itemName)
 			std::cout << "How would you do that without some crafting materials, you slicky boy?";			
 		}
 
-		std::cout << std::endl;
-		std::cout << "---------------------------------------------" << std::endl;
-		std::cout << ">";
+		if (!escaped)
+		{
+			std::cout << std::endl;
+			std::cout << "---------------------------------------------" << std::endl;
+			std::cout << ">";
+		}	
 	}
 }
 
@@ -293,14 +296,17 @@ void Player::Kill(Npc* badguy, const char* npcName)
 	{
 		if (location->name == "Crow's nest")
 		{
+			badguy->alive = false;
+
 			if (Find("Cutlass"))
 			{
 				std::cout << "Fast as the wind, you use your Cutlass to end poor Slingers miserable life. With a mad look in his eyes he falls from the Crow's nest into the sea and disappears." << std::endl;
-				badguy->alive = false;
+				
 			}
 			else
 			{
-				std::cout << "You do not own a weapon!" << std::endl;
+				std::cout << "You don't own a weapon, but you still have your hands! With an unexpected move, you push Slinger out of the Crow's nest and with a mad look in his eyes he falls into the sea and disappears." << std::endl;
+				badguy->hidden = true;
 			}
 		}
 		else std::cout << "You don't have any enemy close." << std::endl;
@@ -354,7 +360,9 @@ const bool Player::Go(const Directions dir)
 					if (location->name == "Main deck" && (*it)->destination->name == "Sleeping quarters")
 					{
 						std::cout << "You cannot just avoid Slinger, coward!!";
-						std::cout << std::endl;		
+						std::cout << std::endl;
+						std::cout << "---------------------------------------------" << std::endl;
+						std::cout << ">";
 						return false;
 					}
 					else

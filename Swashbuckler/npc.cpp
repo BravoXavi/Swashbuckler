@@ -61,6 +61,9 @@ const void Npc::getMad(const Room* playerLocation)
 		if (npcMood == VIOLENT) npcMood = MAD;
 		else if (npcMood == MAD) npcMood = CALM;
 	}
-	std::cout << "---------------------------------------------" << std::endl;
-	std::cout << ">";
+	if (!shot)
+	{
+		std::cout << "---------------------------------------------" << std::endl;
+		std::cout << ">";
+	}	
 }

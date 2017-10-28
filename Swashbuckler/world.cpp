@@ -280,11 +280,11 @@ const void World::ending()
 		std::cout << "The last thing you listen is a loud sound. And then, all black." << std::endl;
 		std::cout << "Davy Jones be with you. YOU DIED." << std::endl;
 	}
-	else if (badguy->alive)
+	else if (badguy->hidden)
 	{
 		std::cout << "You managed to move fast and silently enough to get out of there with the boat without Slinger beeing able to stop you!" << std::endl;
-		std::cout << "Yeah. But did you really think that the lookout is someone with enough bad aiming to not be able of stopping this situation?" << std::endl;
-		std::cout << "The last thing you listen is a loud sound. And then, all black." << std::endl;
+		std::cout << "Yeah. But did you really think that the lookout was just going to disappear without you making sure of it?" << std::endl;
+		std::cout << "The last thing you listen is someone crawling into your boat. And then, all black." << std::endl;
 		std::cout << "Davy Jones be with you. YOU DIED." << std::endl;
 	}
 	else

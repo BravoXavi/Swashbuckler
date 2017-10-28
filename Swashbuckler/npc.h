@@ -23,6 +23,7 @@ public:
 	bool aware = false;
 	bool alive = false;
 	bool shot = false;
+	bool hidden = false;
 
 private:
 	mood npcMood = CALM;
