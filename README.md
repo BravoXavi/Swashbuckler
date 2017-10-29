@@ -13,6 +13,7 @@ This game is user input based, meaning that it will read the user input on real 
 Will you be able to leave _SWASHBUCKLER!_ with your head high or you'll perish and fail as a pirate, landlubber?!
 
 
+⚓️ [**SWASHBUCKLER! Game**](https://github.com/BravoXavi/Swashbuckler/releases)  
 ⚓️ [**SWASHBUCKLER! Guide**](https://github.com/BravoXavi/Swashbuckler/wiki/Guide)   
 ⚓️ [**SWASHBUCKLER! Map**](https://github.com/BravoXavi/Swashbuckler/wiki/Map)   
 ⚓️ [**SWASHBUCKLER! User Actions**](https://github.com/BravoXavi/Swashbuckler/wiki/User-Actions)
